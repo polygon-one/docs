@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Polygon One Helpcenter",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,38 +11,29 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Helpcenter",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Pre Compliance",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "Data management",
+              "Supplier onboarding",
+              "Compliance",
+              "EUDR reports"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Due Diligence Statements",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "Data management",
+              "DDS submission"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Profile Management",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "Required information",
+              "Managing profile"
             ]
           }
         ]
@@ -70,16 +61,6 @@
     ],
     "global": {
       "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
       ]
     }
   },
@@ -91,13 +72,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:yannik.hampe@polygon-one.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "App",
+      "href": "https://polygon1-click-dummy.vercel.app/"
     }
   },
   "contextual": {
