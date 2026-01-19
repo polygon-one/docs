@@ -16,24 +16,24 @@
           {
             "group": "Pre Compliance",
             "pages": [
-              "Data management",
-              "Supplier onboarding",
-              "Compliance",
-              "EUDR reports"
+              "helpcenter/pre-compliance/data-management",
+              "helpcenter/pre-compliance/supplier-onboarding",
+              "helpcenter/pre-compliance/compliance",
+              "helpcenter/pre-compliance/eudr-reports"
             ]
           },
           {
             "group": "Due Diligence Statements",
             "pages": [
-              "Data management",
-              "DDS submission"
+              "helpcenter/dds/data-management",
+              "helpcenter/dds/dds-submission"
             ]
           },
           {
             "group": "Profile Management",
             "pages": [
-              "Required information",
-              "Managing profile"
+              "helpcenter/profile/required-information",
+              "helpcenter/profile/managing-profile"
             ]
           }
         ]
@@ -43,25 +43,53 @@
         "groups": [
           {
             "group": "API documentation",
+            "pages": ["api-reference/introduction"]
+          },
+          {
+            "group": "Articles",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/endpoint/articles/list",
+              "api-reference/endpoint/articles/create",
+              "api-reference/endpoint/articles/get",
+              "api-reference/endpoint/articles/update",
+              "api-reference/endpoint/articles/delete"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Suppliers",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/endpoint/suppliers/list",
+              "api-reference/endpoint/suppliers/create",
+              "api-reference/endpoint/suppliers/get",
+              "api-reference/endpoint/suppliers/update",
+              "api-reference/endpoint/suppliers/delete"
+            ]
+          },
+          {
+            "group": "Orders",
+            "pages": [
+              "api-reference/endpoint/orders/list",
+              "api-reference/endpoint/orders/create",
+              "api-reference/endpoint/orders/get",
+              "api-reference/endpoint/orders/update",
+              "api-reference/endpoint/orders/delete"
+            ]
+          },
+          {
+            "group": "DDS Statements",
+            "pages": [
+              "api-reference/endpoint/dds-statements/list",
+              "api-reference/endpoint/dds-statements/create",
+              "api-reference/endpoint/dds-statements/get",
+              "api-reference/endpoint/dds-statements/update",
+              "api-reference/endpoint/dds-statements/delete"
             ]
           }
         ]
       }
     ],
     "global": {
-      "anchors": [
-      ]
+      "anchors": []
     }
   },
   "logo": {
@@ -83,21 +111,19 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "website": "https://polygon-one.com"
     }
   }
 }

@@ -1,0 +1,65 @@
+---
+title: "DDS Submission"
+description: "Create, sign, and submit Due Diligence Statements"
+icon: "paper-plane"
+---
+
+## Overview
+
+Navigate to the **Due Diligence Dashboard** to create formal compliance declarations. This process connects your compliant articles to specific volumes authorized for trade.
+
+## Creating a DDS
+
+Click **"Create DDS"** to start the multi-step wizard:
+
+<Steps>
+  <Step title="General Info">
+    Select your **Activity Type**:
+    *   **Import:** For goods entering the EU.
+    *   **Export:** For goods leaving the EU.
+
+    *Your company details (Name, Address, EORI) are pre-filled from your Settings.*
+  </Step>
+  <Step title="Supplier & Articles">
+    Select the Supplier and the specific Articles to include in this statement.
+    *   **Specify Volume:** You must enter the total **Volume (kg)** you are declaring for each article.
+  </Step>
+  <Step title="Confirmation & Signature">
+    Review the summary and **sign the official declaration** by typing your full name.
+  </Step>
+  <Step title="Submission">
+    Click Submit. The status will change from **Processing** to **Submitted**, and finally **Validated** once confirmed by EU TRACES.
+  </Step>
+</Steps>
+
+<Warning>
+You must have your **EU TRACES Web Service Access Token** configured in Settings before submitting.
+</Warning>
+
+## Order Assignment
+
+Once a DDS is **Validated**, you can assign commercial orders to it.
+
+1.  Navigate to the **Orders** page.
+2.  Click **"Assign to DDS"** on a relevant order.
+3.  The system displays a list of valid DDS that:
+    *   Match the Supplier.
+    *   Contain the required Articles.
+    *   Have enough **Remaining Volume**.
+
+### Volume Tracking
+
+Polygon One automatically tracks the **Assigned Volume** vs. the **Total DDS Volume**.
+*   The system prevents you from assigning an order if it would exceed the remaining capacity of the DDS.
+
+## Export for Customs
+
+To clear customs, you need the official reference numbers.
+
+1.  Go to the **Orders** page.
+2.  Filter for your assigned orders.
+3.  Click **"Export"**.
+
+<Note>
+The exported file includes both the **DDS Reference Number** AND the **Verification Number**. Both are required for customs clearance and border controls.
+</Note>

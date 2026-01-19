@@ -1,0 +1,73 @@
+---
+title: "Data Management"
+description: "Import and manage your articles and suppliers for EUDR compliance"
+icon: "database"
+---
+
+## Overview
+
+To begin your compliance journey, you must import your articles and suppliers into Polygon One. This forms the foundation for all subsequent risk analysis and due diligence processes.
+
+## Import Methods
+
+<CardGroup cols={3}>
+  <Card title="Manual Entry" icon="keyboard">
+    Best for small updates or testing individual records.
+  </Card>
+  <Card title="CSV Import" icon="file-csv">
+    Ideal for bulk uploading large datasets efficiently.
+  </Card>
+  <Card title="REST API" icon="code">
+    The most efficient method for syncing data directly from your ERP or PIM systems.
+  </Card>
+</CardGroup>
+
+## Importing Articles
+
+<Steps>
+  <Step title="Navigate to Articles">
+    Go to the **Articles** section in your dashboard.
+  </Step>
+  <Step title="Choose Import Method">
+    Select your preferred import method: Manual, CSV, or API.
+  </Step>
+  <Step title="Map Required Fields">
+    Ensure all mandatory fields are mapped correctly, including HS codes.
+  </Step>
+  <Step title="Review & Confirm">
+    Review the import preview and confirm to complete the process.
+  </Step>
+</Steps>
+
+## Importing Suppliers
+
+<Steps>
+  <Step title="Navigate to Suppliers">
+    Go to the **Suppliers** section in your dashboard.
+  </Step>
+  <Step title="Add Supplier Information">
+    Include company name, address, and contact details.
+  </Step>
+  <Step title="Link to Articles">
+    Associate suppliers with the relevant articles they provide.
+  </Step>
+</Steps>
+
+## HS Code Analysis
+
+<Info>
+Once articles are imported, Polygon One automatically analyzes their **HS Codes** to flag products that fall under EUDR scope.
+</Info>
+
+Products containing the following commodities are automatically flagged:
+- Cattle
+- Cocoa
+- Coffee
+- Oil palm
+- Rubber
+- Soya
+- Wood
+
+<Tip>
+Use the **REST API** for continuous synchronization with your ERP system. Check our [API Reference](/api-reference/introduction) for detailed documentation.
+</Tip>

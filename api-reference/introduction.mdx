@@ -1,33 +1,49 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: 'Integrate your ERP system with the EUDR Compliance Platform'
 ---
-
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
 
 ## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+This API allows you to programmatically manage your EUDR compliance data. It is designed to be integrated directly with your ERP system (SAP, Oracle, Microsoft Dynamics, etc.) for server-to-server communication.
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API endpoints are authenticated using Bearer tokens.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+1.  Log in to your dashboard.
+2.  Navigate to **Settings > API Keys**.
+3.  Generate a new key.
+
+Include this key in the `Authorization` header of every request:
+
+```bash
+Authorization: Bearer eudr_8f7d2a...
 ```
+
+<Warning>
+  **Security Notice:** API Keys are secret tokens used to authenticate your application.
+  They should be stored securely in your server's environment variables and **never** exposed in client-side code (browsers).
+</Warning>
+
+## Base URL
+
+All requests should be made to:
+
+```bash
+https://api.yourdomain.com
+```
+
+## Error Handling
+
+The API uses standard HTTP status codes to indicate the success or failure of requests.
+
+| Code | Description |
+| :--- | :--- |
+| `200` | **OK** - The request was successful. |
+| `400` | **Bad Request** - Invalid input data (e.g., malformed JSON or missing required fields). |
+| `401` | **Unauthorized** - Invalid or missing API key. |
+| `403` | **Forbidden** - The API key does not have permission to access this resource. |
+| `422` | **Unprocessable Entity** - Validation failed (e.g., duplicate internal article number). |
+| `500` | **Internal Server Error** - Something went wrong on our end. |

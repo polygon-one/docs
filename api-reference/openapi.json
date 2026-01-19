@@ -1,16 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
+    "title": "EUDR Compliance API",
+    "description": "API for integrating ERP systems with the EUDR Compliance Platform. Allows management of Articles, Suppliers, Orders, and Due Diligence Statements.",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.yourdomain.com",
+      "description": "Production Server"
     }
   ],
   "security": [
@@ -19,40 +17,50 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/api/articles": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "summary": "List Articles",
+        "description": "Retrieve a list of articles. Supports filtering by internal/external IDs, HS codes, and pagination.",
         "parameters": [
+          {
+            "name": "internalArticleNr",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "externalArticleNr",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "hsCode",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "eudrRelevant",
+            "in": "query",
+            "schema": { "type": "boolean" }
+          },
           {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "schema": { "type": "integer", "default": 50 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "default": 0 }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "List of articles",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "items": { "$ref": "#/components/schemas/Article" }
                 }
               }
             }
@@ -60,35 +68,35 @@
         }
       },
       "post": {
-        "description": "Creates a new plant in the store",
+        "summary": "Create Article",
+        "description": "Create a single article or a batch of articles.",
         "requestBody": {
-          "description": "Plant to add to the store",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "oneOf": [
+                  { "$ref": "#/components/schemas/CreateArticleInput" },
+                  {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/CreateArticleInput" }
+                  }
+                ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "plant response",
+            "description": "Created successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "article": { "$ref": "#/components/schemas/Article" }
+                  }
                 }
               }
             }
@@ -96,121 +104,707 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/api/articles/{id}": {
+      "get": {
+        "summary": "Get Article by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of plant to delete",
             "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
+            "schema": { "type": "string", "format": "uuid" }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
+          "200": {
+            "description": "The article details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Article" }
+              }
+            }
           },
-          "400": {
-            "description": "unexpected error",
+          "404": { "description": "Article not found" }
+        }
+      },
+      "patch": {
+        "summary": "Update Article",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateArticleInput" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "article": { "$ref": "#/components/schemas/Article" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Article",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "success": { "type": "boolean" } }
                 }
               }
             }
           }
         }
       }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
+    },
+    "/api/suppliers": {
+      "get": {
+        "summary": "List Suppliers",
+        "description": "Retrieve all suppliers associated with your account.",
+        "responses": {
+          "200": {
+            "description": "List of suppliers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Supplier" }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
-        "description": "Information about a new plant added to the store",
+        "summary": "Create Supplier",
+        "description": "Create a new supplier (single) or batch import suppliers (array).",
         "requestBody": {
-          "description": "Plant added to the store",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "oneOf": [
+                  { "$ref": "#/components/schemas/CreateSupplierInput" },
+                  {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/CreateSupplierInput" }
+                  }
+                ]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
+            "description": "Created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "supplier": { "$ref": "#/components/schemas/Supplier" }
+                  }
+                }
+              }
+            }
           }
+        }
+      }
+    },
+    "/api/suppliers/{id}": {
+      "get": {
+        "summary": "Get Supplier by ID",
+        "description": "Retrieve details of a specific supplier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supplier details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Supplier" }
+              }
+            }
+          },
+          "404": { "description": "Supplier not found" }
+        }
+      },
+      "patch": {
+        "summary": "Update Supplier",
+        "description": "Update supplier details. Expects a partial supplier object.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "email": { "type": "string", "format": "email" },
+                  "country": { "type": "string" },
+                  "contactName": { "type": "string" },
+                  "role": {
+                    "type": "string",
+                    "enum": ["producer", "trader", "unknown"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "supplier": { "$ref": "#/components/schemas/Supplier" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Supplier",
+        "description": "Delete a supplier. This may fail if the supplier is linked to active statements.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "success": { "type": "boolean" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/orders": {
+      "get": {
+        "summary": "List Orders",
+        "description": "Retrieve all orders associated with your account.",
+        "responses": {
+          "200": {
+            "description": "List of orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Order" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Order",
+        "description": "Create a new order (single) or batch import orders (array). Batch imports use flat structures with supplier/article names/numbers instead of IDs.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/CreateOrderInput" },
+                  {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/BatchOrderInput" }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "success": { "type": "boolean" },
+                        "order": { "$ref": "#/components/schemas/Order" }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "imported": { "type": "array", "items": { "type": "object", "properties": { "orderNumber": { "type": "string" } } } },
+                        "failed": { "type": "array", "items": { "type": "object", "properties": { "orderNumber": { "type": "string" }, "error": { "type": "string" } } } },
+                        "skipped": { "type": "integer" }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/orders/{id}": {
+      "get": {
+        "summary": "Get Order by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Order" }
+              }
+            }
+          },
+          "404": { "description": "Order not found" }
+        }
+      },
+      "patch": {
+        "summary": "Update Order",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderDate": { "type": "string", "format": "date-time" },
+                  "orderNumber": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Updated successfully" }
+        }
+      },
+      "delete": {
+        "summary": "Delete Order",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Deleted successfully" }
+        }
+      }
+    },
+    "/api/dds-statements": {
+      "get": {
+        "summary": "List DDS Statements",
+        "description": "Retrieve all Due Diligence Statements created by the user.",
+        "responses": {
+          "200": {
+            "description": "List of statements",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/DdsStatement" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Submit DDS Statement",
+        "description": "Create a new DDS Statement and queue it for submission to the EU TRACES system.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateDdsInput" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Submission queued successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "id": { "type": "string", "format": "uuid" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dds-statements/{id}": {
+      "get": {
+        "summary": "Get DDS Statement",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Statement details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DdsStatement" }
+              }
+            }
+          },
+          "404": { "description": "Not found" }
+        }
+      },
+      "patch": {
+        "summary": "Update DDS Statement",
+        "description": "Update statement metadata (reference/verification numbers) or status.",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "referenceNumber": { "type": ["string", "null"] },
+                  "verificationNumber": { "type": ["string", "null"] },
+                  "type": { "type": "string", "enum": ["import", "export"] }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Updated successfully" }
+        }
+      },
+      "delete": {
+        "summary": "Delete DDS Statement",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }
+        ],
+        "responses": {
+          "200": { "description": "Deleted successfully" }
         }
       }
     }
   },
   "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
-        "scheme": "bearer"
+        "scheme": "bearer",
+        "bearerFormat": "API Key"
+      }
+    },
+    "schemas": {
+      "Article": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "name": { "type": "string" },
+          "internalArticleNr": { "type": "string", "description": "ERP ID" },
+          "externalArticleNr": { "type": ["string", "null"] },
+          "hsCode": { "type": "string" },
+          "ean": { "type": ["string", "null"] },
+          "shortDescription": { "type": ["string", "null"] },
+          "eudrRelevant": { "type": "boolean" },
+          "articleType": { "$ref": "#/components/schemas/ArticleType" },
+          "commodityGroup": { "$ref": "#/components/schemas/CommodityGroup" },
+          "suppliers": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Supplier" }
+          },
+          "complianceResults": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ComplianceResult" }
+          },
+          "countryOfProduction": { "type": ["string", "null"] }
+        }
+      },
+      "CreateArticleInput": {
+        "type": "object",
+        "required": ["name", "internalArticleNr", "hsCode"],
+        "properties": {
+          "name": { "type": "string" },
+          "internalArticleNr": { "type": "string" },
+          "hsCode": { "type": "string" },
+          "shortDescription": { "type": "string" },
+          "externalArticleNr": { "type": "string" },
+          "ean": { "type": "string" },
+          "articleType": { "$ref": "#/components/schemas/ArticleType" },
+          "supplierId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Link to an existing supplier ID. Optional if supplierName is provided."
+          },
+          "supplierName": {
+            "type": "string",
+            "description": "Name of the supplier. Used to find or create a supplier if ID is missing."
+          },
+          "supplierEmail": {
+            "type": "string",
+            "format": "email",
+            "description": "Optional contact email for the supplier."
+          }
+        }
+      },
+      "UpdateArticleInput": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "hsCode": { "type": "string" },
+              "commodityGroup": { "$ref": "#/components/schemas/CommodityGroup" }
+            }
+          },
+          "supplierIds": {
+            "type": "array",
+            "description": "Replace all suppliers with this list of IDs",
+            "items": { "type": "string", "format": "uuid" }
+          }
+        }
+      },
+      "Supplier": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "name": { "type": "string" },
+          "email": { "type": ["string", "null"] },
+          "country": { "type": ["string", "null"] },
+          "role": { "type": "string", "enum": ["producer", "trader", "unknown"] },
+          "status": {
+            "type": "string",
+            "enum": ["data_incomplete", "data_complete", "dds_submitted"]
+          }
+        }
+      },
+      "CreateSupplierInput": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "country": { "type": "string" },
+          "contactName": { "type": "string" },
+          "role": { "type": "string", "enum": ["producer", "trader", "unknown"] },
+          "articleIds": {
+            "type": "array",
+            "items": { "type": "string", "format": "uuid" },
+            "description": "List of existing Article IDs to link to this supplier."
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "orderNumber": { "type": "string" },
+          "orderDate": { "type": "string", "format": "date-time" },
+          "orderType": { "$ref": "#/components/schemas/OrderType" },
+          "supplier": { "$ref": "#/components/schemas/Supplier" },
+          "ddsReferenceId": { "type": ["string", "null"] },
+          "lines": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/OrderLine" }
+          }
+        }
+      },
+      "OrderLine": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "articleId": { "type": "string", "format": "uuid" },
+          "quantity": { "type": "number" },
+          "article": { "$ref": "#/components/schemas/Article" }
+        }
+      },
+      "CreateOrderInput": {
+        "type": "object",
+        "required": ["supplierId", "orderNumber", "orderDate", "lines"],
+        "properties": {
+          "supplierId": { "type": "string", "format": "uuid" },
+          "orderNumber": { "type": "string" },
+          "orderDate": { "type": "string", "format": "date-time" },
+          "orderType": { "$ref": "#/components/schemas/OrderType", "default": "purchase" },
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["articleId", "quantity"],
+              "properties": {
+                "articleId": { "type": "string", "format": "uuid" },
+                "quantity": { "type": "number" }
+              }
+            }
+          }
+        }
+      },
+      "BatchOrderInput": {
+        "type": "object",
+        "description": "Flat structure for bulk import. IDs are resolved via Names/Numbers.",
+        "required": ["orderNumber", "orderDate", "supplierName", "articleNumber", "quantity"],
+        "properties": {
+          "orderNumber": { "type": "string" },
+          "orderDate": { "type": "string", "format": "date-time" },
+          "orderType": { "$ref": "#/components/schemas/OrderType" },
+          "supplierName": { "type": "string" },
+          "articleNumber": { "type": "string" },
+          "articleDescription": { "type": "string" },
+          "quantity": { "type": "number" },
+          "hsCode": { "type": "string" }
+        }
+      },
+      "OrderType": {
+        "type": "string",
+        "enum": ["purchase", "sale", "production"]
+      },
+      "DdsStatement": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "referenceNumber": { "type": ["string", "null"] },
+          "verificationNumber": { "type": ["string", "null"] },
+          "status": { "type": "string" },
+          "type": { "type": "string", "enum": ["import", "export"] },
+          "articles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "volume": { "type": "number" },
+                "articleName": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "CreateDdsInput": {
+        "type": "object",
+        "required": ["supplierId", "type", "articles"],
+        "properties": {
+          "supplierId": { "type": "string", "format": "uuid" },
+          "type": { "type": "string", "enum": ["import", "export"] },
+          "articles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["articleId", "amount"],
+              "properties": {
+                "articleId": { "type": "string", "format": "uuid" },
+                "amount": { "type": "number" }
+              }
+            }
+          }
+        }
+      },
+      "ComplianceResult": {
+        "type": "object",
+        "properties": {
+          "overallStatus": {
+            "type": "string",
+            "enum": ["compliant", "non_compliant", "unknown"]
+          }
+        }
+      },
+      "ArticleType": {
+        "type": "string",
+        "enum": ["purchase", "sale", "production"]
+      },
+      "CommodityGroup": {
+        "type": "string",
+        "enum": [
+          "cattle",
+          "cocoa",
+          "coffee",
+          "oil_palm",
+          "rubber",
+          "soya",
+          "wood",
+          "non_relevant"
+        ]
       }
     }
   }
