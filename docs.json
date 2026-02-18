@@ -55,12 +55,6 @@
             ]
           },
           {
-            "group": "Outbound Artikel",
-            "pages": [
-              "de/helpcenter/outbound-artikel"
-            ]
-          },
-          {
             "group": "DDS & Bestellungen",
             "pages": [
               "de/helpcenter/dds-bestellungen/import-erstellung",
@@ -78,6 +72,7 @@
           {
             "group": "Optional",
             "pages": [
+              "de/helpcenter/optional/outbound-artikel",
               "de/helpcenter/optional/supply-chain",
               "de/helpcenter/optional/dokumente",
               "de/helpcenter/optional/karte",

@@ -8,6 +8,10 @@ icon: "box"
 
 Im Bereich **Artikel** verwalten Sie alle Produkte und Rohstoffe Ihres Unternehmens. Artikel sind die zentrale Datengrundlage für die EUDR-Analyse und die spätere DDS-Erstellung. Jeder Artikel hat einen **Artikeltyp**: entweder **Einkauf** (eingehende Waren) oder **Verkauf** (ausgehende Waren).
 
+<Frame caption="Artikelliste mit EUDR-Relevanz und Warengruppe">
+  <img src="/images/helpcenter/datenhaltung/artikel-liste.png" />
+</Frame>
+
 ## Artikel importieren (CSV)
 
 Die Spaltenzuordnung lässt sich unter **Einstellungen → CSV-Importe** vorkonfigurieren.
@@ -35,14 +39,14 @@ Die Spaltenzuordnung lässt sich unter **Einstellungen → CSV-Importe** vorkonf
   <Step title="CSV-Datei vorbereiten">
     Erstellen Sie eine CSV-Datei mit allen Pflichtfeldern.
   </Step>
-  <Step title="Import starten">
-    Navigieren Sie zum Bereich **Artikel** und klicken Sie auf **Importieren**.
-  </Step>
   <Step title="Spalten zuordnen">
-    Ordnen Sie die Spalten Ihrer CSV-Datei den Feldern in Polygon One zu.
-  </Step>
-  <Step title="Import bestätigen">
-    Prüfen Sie die Vorschau und bestätigen Sie den Import.
+      Passen Sie die CSV-Importe Einstellungen für Artikel entsprechend ihrer CSV-Datei an.
+      <Frame caption="CSV-Spaltenzuordnung für Artikelimport">
+        <img src="/images/helpcenter/datenhaltung/artikel-import-mapping.png" />
+      </Frame>
+    </Step>
+  <Step title="CSV-Datei aussuchen">
+    Navigieren Sie auf Ihrem Rechner zu Ihrer CSV-Datei und bestätigen Sie diese mit **Öffnen**
   </Step>
 </Steps>
 
@@ -64,6 +68,10 @@ Lieferanten können beim Artikelimport automatisch mit angelegt werden, wenn sie
     - **Lieferant** (Pflicht) — aus bestehenden Lieferanten auswählen
     - **Artikeltyp** — Einkauf oder Verkauf
     - **Externe Artikelnummer**, **EAN**, **Kurzbeschreibung** (optional)
+
+    <Frame caption="Artikel manuell erstellen">
+      <img src="/images/helpcenter/datenhaltung/artikel-erstellen.png" />
+    </Frame>
   </Step>
   <Step title="Speichern">
     Klicken Sie auf **Erstellen**, um den Artikel anzulegen.
@@ -85,6 +93,10 @@ Nach dem Import analysiert Polygon One automatisch die **HS-Codes** Ihrer Artike
 </Note>
 
 Die Warengruppe (Commodity Group) wird automatisch aus dem HS-Code abgeleitet und in der Artikelübersicht angezeigt.
+
+<Frame caption="Automatisch erkannte Rohstoffgruppe eines Artikels">
+  <img src="/images/helpcenter/datenhaltung/artikel-rohstoffgruppe.png" />
+</Frame>
 
 <Tip>
 Unter **Einstellungen → CSV-Importe → Artikel** können Sie Ihre Spaltennamen dauerhaft den Polygon One Feldern zuordnen. Nutzen Sie die **REST API** für die automatische Synchronisierung Ihrer Artikeldaten — Details in der [API-Referenz](/api-reference/introduction).

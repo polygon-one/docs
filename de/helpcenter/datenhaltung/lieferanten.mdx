@@ -6,7 +6,11 @@ icon: "truck"
 
 ## Übersicht
 
-Im Bereich **Lieferanten** verwalten Sie alle Zulieferer Ihres Unternehmens. Lieferanten müssen angelegt sein, bevor Sie Artikel mit ihnen verknüpfen oder Bestellungen importieren können.
+Im Bereich **Lieferanten** unter der Sektion **Compliance** verwalten Sie alle Lieferanten Ihres Unternehmens. Lieferanten müssen angelegt sein, bevor Sie Artikel mit ihnen verknüpfen oder Bestellungen importieren können.
+
+<Frame caption="Lieferantenliste in Polygon One">
+  <img src="/images/helpcenter/datenhaltung/lieferanten-liste.png" />
+</Frame>
 
 ## Lieferanten importieren (CSV)
 
@@ -29,19 +33,22 @@ Der schnellste Weg, viele Lieferanten auf einmal anzulegen, ist der CSV-Import. 
   <Step title="CSV-Datei vorbereiten">
     Erstellen Sie eine CSV-Datei mit mindestens den Pflichtfeldern (Name, E-Mail).
   </Step>
+  <Step title="Spalten zuordnen">
+      Bevor Sie den Import anstoßen, Ordnen Sie die Spalten Ihrer CSV-Datei den entsprechenden Feldern in Polygon One unter den **CSV-Importe** Einstellungen zu.
+      <Frame caption="CSV-Spaltenzuordnung für Lieferantenimport">
+        <img src="/images/helpcenter/datenhaltung/lieferanten-import-mapping.png" />
+      </Frame>
+    </Step>
   <Step title="Import starten">
     Navigieren Sie zum Bereich **Lieferanten** und klicken Sie auf **Importieren**.
   </Step>
-  <Step title="Spalten zuordnen">
-    Ordnen Sie die Spalten Ihrer CSV-Datei den entsprechenden Feldern in Polygon One zu.
-  </Step>
   <Step title="Import bestätigen">
-    Überprüfen Sie die Vorschau und bestätigen Sie den Import.
+    Suchen Sie die Datei auf ihrer Maschine aus und klicken Sie auf **Öffnen**
   </Step>
 </Steps>
 
 <Tip>
-Unter **Einstellungen → CSV-Importe → Lieferanten** können Sie Ihre Spaltennamen dauerhaft den Polygon One Feldern zuordnen. So müssen Sie die Zuordnung nicht bei jedem Import erneut vornehmen.
+Unter **Einstellungen → CSV-Importe → Lieferanten** können Sie Ihre Spaltennamen dauerhaft den Polygon One Feldern zuordnen. Diese können Sie aber auch für jede zu importierende Datei anpassen.
 </Tip>
 
 ## Lieferanten manuell erstellen
@@ -58,6 +65,10 @@ Unter **Einstellungen → CSV-Importe → Lieferanten** können Sie Ihre Spalten
     - **Land** (optional)
     - **Externe ID** (optional) — z.B. Ihre interne ERP-Lieferantennummer
     - **Artikel** (optional) — direkt Artikel zuordnen
+
+    <Frame caption="Lieferant manuell erstellen">
+      <img src="/images/helpcenter/datenhaltung/lieferanten-erstellen.png" />
+    </Frame>
   </Step>
   <Step title="Speichern">
     Klicken Sie auf **Erstellen**, um den Lieferanten anzulegen.
@@ -72,17 +83,25 @@ Bestehende Lieferanten können jederzeit über die Tabelle bearbeitet werden:
 2. Wählen Sie **Bearbeiten**.
 3. Passen Sie die Felder an und speichern Sie.
 
+<Frame caption="Bearbeiten-Menü für Lieferanten">
+  <img src="/images/helpcenter/datenhaltung/lieferanten-aktionen.png" />
+</Frame>
+
 ## Lieferanten einladen
 
 Direkt aus der Lieferantenliste können Sie Lieferanten zur Datenbereitstellung einladen:
 
-1. Klicken Sie auf **Einladen** beim gewünschten Lieferanten.
+1. Klicken Sie auf **Informationen Anfordern** beim gewünschten Lieferanten.
 2. Wählen Sie die EUDR-relevanten Artikel aus, für die Daten benötigt werden.
 3. Optional: Passen Sie die Einladungsnachricht an.
 4. Der Lieferant erhält eine E-Mail mit Zugang zum Supplier Portal.
 
+<Frame caption="Lieferant einladen mit Artikelauswahl">
+  <img src="/images/helpcenter/datenhaltung/lieferanten-einladen.png" />
+</Frame>
+
 <Info>
-Über die Funktion **Alle Lieferanten einladen** können Sie auch Masseneinladungen versenden — alle Lieferanten mit E-Mail-Adresse werden gleichzeitig eingeladen.
+Über die Funktion **Alle Lieferanten einladen** in ihrem **Inbound** Compliacne Dashboard, können Sie auch Masseneinladungen versenden — alle Lieferanten mit E-Mail-Adresse werden gleichzeitig eingeladen.
 </Info>
 
 <Tip>

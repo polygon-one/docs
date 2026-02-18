@@ -1,12 +1,12 @@
 ---
 title: "TRACES-Registrierung"
-description: "EU TRACES Registrierung und Integration mit Polygon One"
+description: "Schritt-für-Schritt Anleitung zur Einrichtung der EUDR-Zugangsdaten"
 icon: "id-card"
 ---
 
 ## Was ist EU TRACES?
 
-EU TRACES (Trade Control and Expert System) ist das offizielle System der Europäischen Union für die Einreichung von Due Diligence Statements (DDS). Um DDS über Polygon One einreichen zu können, benötigen Sie einen aktiven EU TRACES Account.
+EU TRACES NT (Trade Control and Expert System) ist das offizielle System der Europäischen Union für die Einreichung von Due Diligence Statements (DDS). Um DDS über Polygon One einreichen zu können, benötigen Sie einen aktiven EU TRACES Account mit einem **Web Service Access Authentication Key**.
 
 ## Wann brauche ich TRACES?
 
@@ -14,38 +14,160 @@ EU TRACES (Trade Control and Expert System) ist das offizielle System der Europ�
 Sie benötigen EU TRACES Zugangsdaten, sobald Sie Due Diligence Statements erstellen und an die EU übermitteln möchten. Für die vorgelagerten Schritte (Datenhaltung, Analyse, Datensammlung) ist TRACES **nicht** erforderlich.
 </Info>
 
-## Registrierung bei EU TRACES
+## Vereinfacht erklärt
+
+Bevor Polygon One DDS an die EU übermitteln kann, müssen Sie Ihr Unternehmen im offiziellen EU-System (TRACES NT) registrieren und einen **Web Service Authentication Key** erhalten. Der Prozess umfasst:
+
+1. EU Login Account erstellen
+2. Ihr Unternehmen als Operator registrieren
+3. Sich dem Operator als Benutzer zuweisen
+4. Den Web Service Authentication Key per E-Mail beantragen
+5. Den Key in Polygon One hinterlegen
+
+---
+
+## Schritt 1: Offizielle Dokumentation lesen (optional)
+
+Lesen Sie die offizielle EUDR API-Dokumentation, um die technischen Anforderungen zu verstehen.
+
+<Note>
+Die offizielle EUDR-Dokumentation ist sehr technisch. Wenn Sie zum ersten Mal mit dem EUDR-System arbeiten, können Sie diesen Schritt überspringen und später darauf zurückkommen. Polygon One bietet eine benutzerfreundliche Oberfläche für die meisten Vorgänge.
+</Note>
+
+<Card title="EUDR API Specifications for Operators" icon="file-lines" href="https://food.ec.europa.eu/document/download/98be6baf-acf0-4fca-965f-835de108a205_en">
+  Offizielle technische Spezifikationen und Compliance-Anforderungen (v1.4)
+</Card>
+
+## Schritt 2: EU Login Account erstellen
+
+Registrieren Sie sich für einen EU Login Account auf dem offiziellen EUDR TRACES Portal. EU Login ist der zentrale Authentifizierungsdienst der Europäischen Kommission.
+
+<Frame caption="EU Login Registrierungsseite">
+  <img src="/images/helpcenter/onboarding/traces-eu-login.png" />
+</Frame>
+
+<Card title="EU Login erstellen — Offizielle Anleitung" icon="user-plus" href="https://webgate.ec.europa.eu/cas/login">
+  Folgen Sie der offiziellen Anleitung zur Erstellung Ihres EU Login Accounts.
+</Card>
+
+<Card title="EUDR Acceptance Portal (Testumgebung)" icon="globe" href="https://acceptance.eudr.webcloud.ec.europa.eu/tracesnt/login">
+  Nutzen Sie die Acceptance-Umgebung zum Testen.
+</Card>
+
+## Schritt 3: Operator-Entity in TRACES NT erstellen
+
+Im EUDR Portal müssen Sie Ihr Unternehmen als **Operator** mit spezifischen Aktivitäten und vollständigen Firmendaten registrieren. Dieser Schritt bestimmt Ihre Rolle in der Lieferkette.
+
+<Frame caption="Operator-Erstellung im TRACES NT Portal">
+  <img src="/images/helpcenter/onboarding/traces-operator-erstellen.png" />
+</Frame>
+
+<Warning>
+- Die Operator-Entity muss von einem Administrator **validiert** werden, bevor Benutzer zugewiesen werden können
+- Alle Angaben müssen mit Ihren offiziellen Handelsregisterdaten übereinstimmen
+- Doppelte Operator-Einträge werden nicht validiert
+</Warning>
+
+## Schritt 4: Benutzerrolle dem Operator zuweisen
+
+Nach dem Erstellen der Operator-Entity müssen Sie Ihren Benutzeraccount dem Operator zuweisen:
 
 <Steps>
-  <Step title="EU Login erstellen">
-    Erstellen Sie zunächst einen EU Login Account unter [EU Login](https://webgate.ec.europa.eu/cas/login). Dies ist das zentrale Anmeldesystem der EU.
+  <Step title="Profil bearbeiten">
+    Navigieren Sie zu **"Edit your profile"** im EUDR Portal.
   </Step>
-  <Step title="TRACES-Zugang beantragen">
-    Melden Sie sich bei [EU TRACES](https://webgate.ec.europa.eu/tracesnt) an und beantragen Sie Zugang als Wirtschaftsakteur (Operator).
+  <Step title="Neue Rolle anfordern">
+    Wählen Sie **"Request new role"** und dann **"Operator"**.
   </Step>
-  <Step title="Unternehmensdaten verifizieren">
-    Vervollständigen Sie Ihr Unternehmensprofil in TRACES mit den offiziellen Firmendaten.
+  <Step title="Operator suchen">
+    Suchen Sie Ihre Operator-Entity nach Land und EUDR-Sektion.
   </Step>
-  <Step title="Web Service Token generieren">
-    Navigieren Sie zu Ihren TRACES-Einstellungen und erstellen Sie einen API-Token (Web Service Access Token) für die Integration mit Polygon One.
+  <Step title="Autorisierung senden">
+    Senden Sie die Autorisierungsanfrage, um Benutzer des Operators zu werden.
   </Step>
 </Steps>
 
-## TRACES-Zugangsdaten in Polygon One hinterlegen
+<Warning>
+Die Operator-Entity muss durch einen Administrator **validiert** sein, bevor Sie den nächsten Schritt (Web Service Authentication Key beantragen) durchführen können. Die Validierung kann **1–3 Werktage** dauern.
+</Warning>
 
-Nachdem Sie Ihren TRACES-Zugang eingerichtet haben, hinterlegen Sie die Zugangsdaten in Polygon One:
+## Schritt 5: Web Service Authentication Key beantragen
+
+Nachdem alle vorherigen Schritte abgeschlossen sind, werden Sie feststellen, dass das Feld **Web Service Client Authentication Key** in Ihrem EUDR Portal leer ist. Das ist normal — dieser Key wird **nicht automatisch generiert**, sondern muss per E-Mail beantragt werden.
+
+Senden Sie eine E-Mail an **SANTE-TRACES@ec.europa.eu** mit folgender Vorlage:
+
+### E-Mail-Vorlage
+
+```
+An: SANTE-TRACES@ec.europa.eu
+Betreff: Request for Web Services Authentication Key - [Ihr Firmenname]
+
+Dear EUDR Support Team,
+
+I am writing to request Web Services Authentication Key for the EUDR
+Information System (TRACES NT) to enable API integration with your system.
+
+Company Information:
+- Company Name: [Ihr Firmenname]
+- VAT ID: [Ihre Umsatzsteuer-ID]
+- EUDR Portal Username: [Ihr EUDR Benutzername]
+
+I need Web Services Authentication Key for the following environment:
+- Acceptance Environment (for testing and development)
+
+Please provide the Web Service Access Authentication Key that will allow
+our system to integrate with the EUDR API.
+
+Thank you for your assistance.
+
+Best regards,
+[Ihr Name]
+[Ihre Kontaktinformationen]
+```
+
+<Info>
+**Bearbeitungszeit:** 1–2 Werktage. Sie erhalten den Key per E-Mail nach Genehmigung.
+</Info>
+
+## Schritt 6: Konfiguration überprüfen
+
+Sobald Sie Ihren Web Service Authentication Key erhalten haben, prüfen Sie im EUDR Portal, ob Ihr Unternehmen korrekt konfiguriert ist. Das Feld **Web Service Access** sollte nun befüllt sein.
+
+<Frame caption="TRACES Portal mit befülltem Web Service Access Feld">
+  <img src="/images/helpcenter/onboarding/traces-webservice-key.png" />
+</Frame>
+
+## Schritt 7: Zugangsdaten in Polygon One hinterlegen
+
+Hinterlegen Sie Ihre EUDR-Zugangsdaten in Polygon One unter **Einstellungen → Profil**:
+
+<Frame caption="TRACES-Zugangsdaten in Polygon One Einstellungen">
+  <img src="/images/helpcenter/onboarding/traces-polygon-einstellungen.png" />
+</Frame>
 
 | Feld | Beschreibung |
 |------|-------------|
-| **TRACES Benutzername** | Ihr registrierter EU TRACES Benutzername |
-| **Web Service Token** | Der API-Token aus Ihren TRACES-Einstellungen |
+| **TRACES Benutzername** | Ihr registrierter EU TRACES Benutzername (Format: `n00ixxx`) |
+| **Web Service Authentication Key (TEST)** | Key für die EUDR Acceptance-Umgebung (Testumgebung) |
+| **Web Service Authentication Key (LIVE)** | Key für die EUDR Produktionsumgebung (optional, für den Echtbetrieb) |
+
+Klicken Sie auf **"Speichern"**, um die Konfiguration abzuschließen.
 
 <Warning>
-Bewahren Sie Ihren API-Token sicher auf und teilen Sie ihn nicht mit Dritten.
+**Sicherheitshinweise:**
+- Bewahren Sie Ihre EUDR-Zugangsdaten sicher auf und teilen Sie diese nicht öffentlich
+- Verwenden Sie Acceptance-Zugangsdaten nur für Tests und Entwicklung
+- Produktions-Zugangsdaten sollten nur für den Echtbetrieb verwendet werden
 </Warning>
 
-## Hinweise
+## Hilfe & Kontakt
 
-- Die TRACES-Registrierung kann einige Tage in Anspruch nehmen, da eine Verifizierung durch die zuständige Behörde erfolgt.
-- Stellen Sie sicher, dass die Firmendaten in TRACES mit den Daten in Polygon One übereinstimmen.
-- Bei Problemen mit der TRACES-Registrierung unterstützt Sie unser Team gerne.
+| Thema | Kontakt |
+|-------|---------|
+| **Probleme mit dem EUDR Portal** | SANTE-TRACES@ec.europa.eu |
+| **Technischer Support (Polygon One)** | Unser Support-Team hilft Ihnen gerne weiter |
+
+<Note>
+Die TRACES-Registrierung kann insgesamt einige Tage in Anspruch nehmen, da sowohl die Operator-Validierung als auch die Key-Beantragung Bearbeitungszeit benötigen. Planen Sie dies entsprechend ein.
+</Note>
