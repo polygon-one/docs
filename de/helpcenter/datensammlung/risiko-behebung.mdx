@@ -1,0 +1,99 @@
+---
+title: "Risiko-Behebung"
+description: "Entwaldungs- und Rechtsrisiken identifizieren und beheben"
+icon: "shield-check"
+---
+
+## Übersicht
+
+Nach der automatischen Analyse können bei Ihren Artikeln verschiedene Risiken identifiziert werden. Polygon One unterscheidet zwischen **Geo-Risiken** (Entwaldung/Degradation) und **rechtlichen Risiken**. Beide müssen behoben werden, bevor ein Artikel als compliant gilt.
+
+## Geo-Risiken (Entwaldung & Degradation)
+
+Polygon One analysiert die übermittelten Geodaten mithilfe mehrerer Satellitendatenquellen:
+
+- **ESA WorldCover** — Landbedeckungsklassifizierung
+- **JRC Globale Waldbedeckung** — Walderkennung
+- **GFT Waldtyp** — Degradationsanalyse (Primärwald, Naturwald, Plantagenwald)
+- **TMF Tropischer Feuchtwald** — Entwaldungs- und Degradationserkennung
+- **PALSAR Radar** — Unabhängige Waldbestätigung
+
+### Mögliche Risikokennzeichen
+
+| Risiko | Beschreibung |
+|--------|-------------|
+| **Wald erkannt** | JRC erkennt Waldbedeckung auf der Fläche |
+| **Degradierung von Primärwald** | GFT erkennt Primärwald — Ernte birgt Degradationsrisiko |
+| **Degradierung von Naturwald** | GFT erkennt natürlich regenerierenden Wald |
+| **TMF-Entwaldung erkannt** | TMF erkennt Entwaldungsaktivität |
+| **TMF-Degradierung erkannt** | TMF erkennt degradierte Fläche |
+| **Agroforstwirtschaft mehrdeutig** | Agroforstwirtschaft neben signifikanter Waldbedeckung |
+
+### Geo-Risiken mitigieren
+
+<Steps>
+  <Step title="Risikokennzeichen prüfen">
+    Öffnen Sie die Flächendetails im Dashboard und prüfen Sie die markierten Risikokennzeichen mit den Satellitenanalyse-Ergebnissen.
+  </Step>
+  <Step title="Mitigieren klicken">
+    Klicken Sie bei einem offenen Risikokennzeichen auf **"Mitigieren"**.
+  </Step>
+  <Step title="Nachweis bereitstellen">
+    Sie haben drei Optionen:
+    - **Dokument hochladen** — Laden Sie einen Nachweis hoch (z.B. Waldbewirtschaftungsplan, Zertifizierung)
+    - **Bestehendes Zertifikat** — Verwenden Sie ein bereits verifiziertes Zertifikat
+    - **Vom Lieferanten anfordern** — Senden Sie eine E-Mail-Anfrage an den Lieferanten
+  </Step>
+  <Step title="KI-Validierung">
+    Die KI prüft den eingereichten Nachweis automatisch auf Relevanz und Vertrauenswürdigkeit.
+  </Step>
+</Steps>
+
+<Info>
+Über die Funktion **"Stapelweise Risikominderung"** können Sie alle offenen Risikokennzeichen eines Artikels oder Lieferanten in einem Schritt bearbeiten.
+</Info>
+
+## Rechtliche Risiken
+
+Das System identifiziert rechtliche Risiken basierend auf dem Fragebogen und den hochgeladenen Dokumenten.
+
+### Rechtliche Risikokategorien
+
+- Landnutzungsrechte
+- Umweltschutz
+- Forstvorschriften
+- Rechte Dritter & indigener Gemeinschaften
+- Arbeits- & Menschenrechte
+- Steuer-, Handels- & Zollvorschriften
+- Anti-Korruption
+
+### Rechtliche Risiken mitigieren
+
+Für jede Kategorie mit identifiziertem Risiko:
+
+1. Klicken Sie auf **"Mitigieren"** bei der betroffenen Kategorie.
+2. Laden Sie ein Nachweisdokument hoch, verwenden Sie ein bestehendes Zertifikat, oder fordern Sie die Dokumentation vom Lieferanten an.
+3. Fügen Sie optional eine Notiz mit Kontext hinzu.
+4. Die KI validiert den eingereichten Nachweis.
+
+### Validierungsstatus
+
+| Status | Beschreibung |
+|--------|-------------|
+| **Akzeptiert** | Nachweis wurde geprüft und akzeptiert |
+| **Ausstehend** | Nachweis wurde eingereicht und wird geprüft |
+| **Abgelehnt** | Nachweis wurde abgelehnt — erneute Einreichung erforderlich |
+
+## Fehlende oder abgelehnte Dokumente
+
+<Warning>
+Abgelehnte Nachweise müssen durch neue Dokumente ersetzt werden. Nutzen Sie die Option **"Vom Lieferanten anfordern"**, um den Lieferanten direkt per E-Mail über das Problem zu informieren und korrigierte Dokumente anzufordern.
+</Warning>
+
+## Lieferantenkommunikation
+
+Nutzen Sie das integrierte **Nachrichtensystem** (unter **Nachrichten**), um direkt mit Lieferanten über die Plattform zu kommunizieren:
+
+- Fragen zu eingereichten Dokumenten stellen
+- Korrekturen anfordern
+- Status-Updates austauschen

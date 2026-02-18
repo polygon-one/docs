@@ -1,0 +1,90 @@
+---
+title: "Lieferanten"
+description: "Lieferantendaten erstellen, importieren und verwalten"
+icon: "truck"
+---
+
+## Übersicht
+
+Im Bereich **Lieferanten** verwalten Sie alle Zulieferer Ihres Unternehmens. Lieferanten müssen angelegt sein, bevor Sie Artikel mit ihnen verknüpfen oder Bestellungen importieren können.
+
+## Lieferanten importieren (CSV)
+
+Der schnellste Weg, viele Lieferanten auf einmal anzulegen, ist der CSV-Import. Die Spaltenzuordnung lässt sich unter **Einstellungen → CSV-Importe** vorkonfigurieren, sodass Sie Ihre eigene CSV-Struktur beibehalten können.
+
+### CSV-Felder
+
+| Feld | Pflicht | Beschreibung |
+|------|---------|-------------|
+| **Name** | Ja | Firmenname des Lieferanten |
+| **E-Mail** | Ja | Kontakt-E-Mail des Lieferanten |
+| **Kontaktperson** | Nein | Name der Kontaktperson |
+| **Land** | Nein | Herkunftsland |
+| **Adresse** | Nein | Adresse des Lieferanten |
+| **Externe ID** | Nein | Externe Lieferantenkennung (z.B. ERP-Nummer) |
+
+### Import durchführen
+
+<Steps>
+  <Step title="CSV-Datei vorbereiten">
+    Erstellen Sie eine CSV-Datei mit mindestens den Pflichtfeldern (Name, E-Mail).
+  </Step>
+  <Step title="Import starten">
+    Navigieren Sie zum Bereich **Lieferanten** und klicken Sie auf **Importieren**.
+  </Step>
+  <Step title="Spalten zuordnen">
+    Ordnen Sie die Spalten Ihrer CSV-Datei den entsprechenden Feldern in Polygon One zu.
+  </Step>
+  <Step title="Import bestätigen">
+    Überprüfen Sie die Vorschau und bestätigen Sie den Import.
+  </Step>
+</Steps>
+
+<Tip>
+Unter **Einstellungen → CSV-Importe → Lieferanten** können Sie Ihre Spaltennamen dauerhaft den Polygon One Feldern zuordnen. So müssen Sie die Zuordnung nicht bei jedem Import erneut vornehmen.
+</Tip>
+
+## Lieferanten manuell erstellen
+
+<Steps>
+  <Step title="Neuen Lieferanten anlegen">
+    Klicken Sie im Bereich **Lieferanten** auf **Erstellen**.
+  </Step>
+  <Step title="Daten eingeben">
+    Füllen Sie die folgenden Felder aus:
+    - **Lieferantenname** (Pflicht)
+    - **E-Mail** (Pflicht)
+    - **Kontaktperson** (optional)
+    - **Land** (optional)
+    - **Externe ID** (optional) — z.B. Ihre interne ERP-Lieferantennummer
+    - **Artikel** (optional) — direkt Artikel zuordnen
+  </Step>
+  <Step title="Speichern">
+    Klicken Sie auf **Erstellen**, um den Lieferanten anzulegen.
+  </Step>
+</Steps>
+
+## Lieferanten bearbeiten
+
+Bestehende Lieferanten können jederzeit über die Tabelle bearbeitet werden:
+
+1. Klicken Sie in der Lieferantenliste auf das **Aktionen**-Menü (⋯) des gewünschten Lieferanten.
+2. Wählen Sie **Bearbeiten**.
+3. Passen Sie die Felder an und speichern Sie.
+
+## Lieferanten einladen
+
+Direkt aus der Lieferantenliste können Sie Lieferanten zur Datenbereitstellung einladen:
+
+1. Klicken Sie auf **Einladen** beim gewünschten Lieferanten.
+2. Wählen Sie die EUDR-relevanten Artikel aus, für die Daten benötigt werden.
+3. Optional: Passen Sie die Einladungsnachricht an.
+4. Der Lieferant erhält eine E-Mail mit Zugang zum Supplier Portal.
+
+<Info>
+Über die Funktion **Alle Lieferanten einladen** können Sie auch Masseneinladungen versenden — alle Lieferanten mit E-Mail-Adresse werden gleichzeitig eingeladen.
+</Info>
+
+<Tip>
+Nutzen Sie die **REST API** für die automatische Synchronisierung mit Ihrem ERP-System. Details finden Sie in der [API-Referenz](/api-reference/introduction).
+</Tip>

@@ -1,0 +1,71 @@
+---
+title: "EUDR Analyse"
+description: "Automatische Systemanalyse und Einteilung in relevante und irrelevante Artikel"
+icon: "magnifying-glass-chart"
+---
+
+## Übersicht
+
+Nach dem Import Ihrer Artikel führt Polygon One automatisch eine **EUDR-Relevanzanalyse** durch. Das System prüft anhand der HS-Codes, welche Ihrer Artikel unter die EU-Entwaldungsverordnung fallen.
+
+## Automatische Analyse
+
+Die Analyse erfolgt automatisch im Hintergrund, sobald Artikel mit einem HS-Code in der Plattform angelegt werden. Sie müssen hierfür nichts manuell anstoßen.
+
+### Einteilung der Artikel
+
+Nach der Analyse werden Ihre Artikel gekennzeichnet:
+
+| Kennzeichnung | Beschreibung |
+|---------------|-------------|
+| **EUDR-relevant** | Der Artikel enthält Rohstoffe, die unter die EUDR fallen. Für diesen Artikel müssen Nachweise gesammelt und eine DDS erstellt werden. |
+| **Nicht EUDR-relevant** | Der Artikel fällt nicht unter die EUDR. Es sind keine weiteren Maßnahmen erforderlich. |
+
+Die EUDR-Relevanz wird in der Artikelübersicht als Spalte angezeigt und kann als Filter verwendet werden.
+
+## EUDR-relevante Rohstoffe (Warengruppen)
+
+Die EUDR betrifft Produkte, die folgende Rohstoffe enthalten oder aus ihnen hergestellt wurden:
+
+<CardGroup cols={4}>
+  <Card title="Rinder" icon="cow" />
+  <Card title="Kakao" icon="seedling" />
+  <Card title="Kaffee" icon="mug-hot" />
+  <Card title="Ölpalme" icon="tree" />
+  <Card title="Kautschuk" icon="car" />
+  <Card title="Soja" icon="leaf" />
+  <Card title="Holz" icon="tree" />
+</CardGroup>
+
+Die erkannte Warengruppe (Commodity Group) wird automatisch aus dem HS-Code abgeleitet und im Artikel angezeigt.
+
+## Compliance-Dashboard
+
+Sobald die Analyse abgeschlossen ist, zeigt das **Compliance-Dashboard** (Eingehend) eine vollständige Übersicht:
+
+- **EUDR-relevante Lieferanten** — Anzahl der betroffenen Lieferanten
+- **Analysierte Fläche** — Gesamtfläche in Hektar
+- **Konforme Artikel** — Anzahl der konformen EUDR-relevanten Artikel
+- **Ausstehende Aktionen** — Artikel mit fehlenden Geo-Daten, fehlender rechtlicher Analyse oder fehlendem Bericht
+
+### Compliance-Status pro Artikel
+
+| Status | Beschreibung |
+|--------|-------------|
+| **Konform** | Alle Anforderungen erfüllt — bereit für DDS |
+| **Nicht konform** | Entwaldungsrisiko oder rechtliche Mängel erkannt |
+| **Prüfung ausstehend** | Daten wurden eingereicht, Analyse läuft |
+| **Unbekannt** | Fehlende Daten oder Dokumentation |
+
+## Nächste Schritte
+
+Sobald Ihre EUDR-relevanten Artikel identifiziert wurden, fahren Sie mit der **Datensammlung** fort:
+
+<CardGroup cols={2}>
+  <Card title="Evidence Upload" icon="upload" href="/de/helpcenter/datensammlung/evidence-upload">
+    Laden Sie Dokumente und Geodaten für relevante Artikel hoch.
+  </Card>
+  <Card title="Supplier Onboarding" icon="users" href="/de/helpcenter/datensammlung/supplier-onboarding">
+    Laden Sie Lieferanten ein, ihre Nachweise über das Supplier Portal bereitzustellen.
+  </Card>
+</CardGroup>

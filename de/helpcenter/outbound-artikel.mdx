@@ -1,0 +1,61 @@
+---
+title: "Outbound Artikel"
+description: "Input-zu-Output Artikelverknüpfung für ausgehende Waren"
+icon: "arrows-turn-right"
+---
+
+## Übersicht
+
+Das **Ausgehend-Dashboard** (Outbound) zeigt alle Ihre Verkaufsartikel und deren Compliance-Status. Hier verknüpfen Sie eingehende Artikel (Input) mit ausgehenden Artikeln (Output) und verwalten die Compliance für Ihre ausgehenden Waren.
+
+## Wann ist diese Verknüpfung nötig?
+
+<Info>
+Die Verknüpfung von Eingangsartikeln (BOM-Linking) ist notwendig, wenn Sie Waren weiterverarbeiten und die EUDR-Compliance-Nachweise der Eingangsartikel auf die Ausgangsartikel übertragen müssen.
+</Info>
+
+**Beispiele:**
+- Kakaobohnen (Einkaufsartikel) → Schokolade (Verkaufsartikel)
+- Mehrere Rohstoffe werden zu einem Fertigprodukt kombiniert
+- Ein Artikel wird umverpackt und unter neuer Artikelnummer verkauft
+
+## Eingangsartikel verknüpfen (BOM-Linking)
+
+<Steps>
+  <Step title="Verkaufsartikel auswählen">
+    Navigieren Sie im **Ausgehend-Dashboard** zum Verkaufsartikel, dem Sie Eingangsartikel zuordnen möchten.
+  </Step>
+  <Step title="Eingangsartikel verknüpfen">
+    Klicken Sie auf **"Eingangsartikel verknüpfen"**. Es öffnet sich ein Dialog, in dem Sie aus Ihren Einkaufsartikeln auswählen können.
+  </Step>
+  <Step title="Einkaufsartikel auswählen">
+    Suchen Sie nach Name oder Artikelnummer und wählen Sie die Artikel aus, die als Input für diesen Verkaufsartikel verwendet werden.
+  </Step>
+  <Step title="Stückliste speichern">
+    Klicken Sie auf **"Stückliste speichern"**. Die Compliance-Nachweise der Eingangsartikel werden automatisch auf den Verkaufsartikel übertragen.
+  </Step>
+</Steps>
+
+## EU-Produktion (Domestic Production)
+
+Falls Sie Waren in der EU selbst produzieren, können Sie direkt im Ausgehend-Dashboard die **EU-Produktionsinformationen** hinterlegen:
+
+<Steps>
+  <Step title="Produktionsland angeben">
+    Wählen Sie das Produktionsland und speichern Sie.
+  </Step>
+  <Step title="Produktionsfläche hinzufügen">
+    Zeichnen Sie die Fläche auf der Karte ein oder laden Sie eine GeoJSON-Datei hoch.
+  </Step>
+  <Step title="DDS erstellen">
+    Geben Sie die Menge (kg) an, akzeptieren Sie die Erklärung und reichen Sie die DDS für inländische Produktion ein.
+  </Step>
+</Steps>
+
+## Nachgelagerte Marktteilnehmer
+
+Im Ausgehend-Dashboard können Sie auch die **nachgelagerten Marktteilnehmer** (Downstream Operators) einsehen — Unternehmen, die Ihre Produkte kaufen und deren DDS-Referenzen.
+
+<Note>
+Die Compliance-Nachweise der Eingangsartikel müssen vollständig sein, bevor die Verknüpfung mit Verkaufsartikeln sinnvoll ist.
+</Note>

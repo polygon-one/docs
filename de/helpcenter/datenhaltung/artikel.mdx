@@ -1,0 +1,91 @@
+---
+title: "Artikel"
+description: "Artikeldaten erstellen, importieren und verwalten"
+icon: "box"
+---
+
+## Übersicht
+
+Im Bereich **Artikel** verwalten Sie alle Produkte und Rohstoffe Ihres Unternehmens. Artikel sind die zentrale Datengrundlage für die EUDR-Analyse und die spätere DDS-Erstellung. Jeder Artikel hat einen **Artikeltyp**: entweder **Einkauf** (eingehende Waren) oder **Verkauf** (ausgehende Waren).
+
+## Artikel importieren (CSV)
+
+Die Spaltenzuordnung lässt sich unter **Einstellungen → CSV-Importe** vorkonfigurieren.
+
+### CSV-Felder
+
+| Feld | Pflicht | Beschreibung |
+|------|---------|-------------|
+| **Name** | Ja | Artikelbezeichnung |
+| **Artikelnummer** | Ja | Interne Artikelnummer |
+| **HS-Code** | Ja | Zolltarifnummer — wird für die automatische EUDR-Relevanzprüfung benötigt |
+| **Lieferant** | Ja | Lieferantenname (alternativ: Externe Lieferanten-ID) |
+| **Artikeltyp** | Nein | `purchase` (Einkauf) oder `sale` (Verkauf) |
+| **Beschreibung** | Nein | Kurzbeschreibung |
+| **Externe Artikelnummer** | Nein | Externe Referenznummer |
+| **EAN** | Nein | Europäische Artikelnummer |
+| **Lieferanten-E-Mail** | Nein | E-Mail des zugehörigen Lieferanten |
+| **Lieferantenland** | Nein | Land des Lieferanten |
+| **Lieferantenadresse** | Nein | Adresse des Lieferanten |
+| **Externe Lieferanten-ID** | Nein | Externe Kennung (Alternative zum Lieferantennamen) |
+
+### Import durchführen
+
+<Steps>
+  <Step title="CSV-Datei vorbereiten">
+    Erstellen Sie eine CSV-Datei mit allen Pflichtfeldern.
+  </Step>
+  <Step title="Import starten">
+    Navigieren Sie zum Bereich **Artikel** und klicken Sie auf **Importieren**.
+  </Step>
+  <Step title="Spalten zuordnen">
+    Ordnen Sie die Spalten Ihrer CSV-Datei den Feldern in Polygon One zu.
+  </Step>
+  <Step title="Import bestätigen">
+    Prüfen Sie die Vorschau und bestätigen Sie den Import.
+  </Step>
+</Steps>
+
+<Info>
+Lieferanten können beim Artikelimport automatisch mit angelegt werden, wenn sie noch nicht existieren. Das System erkennt Lieferanten anhand des Namens oder der externen ID.
+</Info>
+
+## Artikel manuell erstellen
+
+<Steps>
+  <Step title="Neuen Artikel anlegen">
+    Klicken Sie im Bereich **Artikel** auf **Erstellen**.
+  </Step>
+  <Step title="Daten eingeben">
+    Füllen Sie folgende Felder aus:
+    - **Name** (Pflicht)
+    - **Interne Artikelnummer** (Pflicht)
+    - **HS-Code** (Pflicht)
+    - **Lieferant** (Pflicht) — aus bestehenden Lieferanten auswählen
+    - **Artikeltyp** — Einkauf oder Verkauf
+    - **Externe Artikelnummer**, **EAN**, **Kurzbeschreibung** (optional)
+  </Step>
+  <Step title="Speichern">
+    Klicken Sie auf **Erstellen**, um den Artikel anzulegen.
+  </Step>
+</Steps>
+
+## HS-Code und EUDR-Relevanz
+
+<Note>
+Nach dem Import analysiert Polygon One automatisch die **HS-Codes** Ihrer Artikel und kennzeichnet, welche Produkte unter die EUDR fallen. Produkte mit folgenden Rohstoffen werden als EUDR-relevant markiert:
+
+- Rinder
+- Kakao
+- Kaffee
+- Ölpalme
+- Kautschuk
+- Soja
+- Holz
+</Note>
+
+Die Warengruppe (Commodity Group) wird automatisch aus dem HS-Code abgeleitet und in der Artikelübersicht angezeigt.
+
+<Tip>
+Unter **Einstellungen → CSV-Importe → Artikel** können Sie Ihre Spaltennamen dauerhaft den Polygon One Feldern zuordnen. Nutzen Sie die **REST API** für die automatische Synchronisierung Ihrer Artikeldaten — Details in der [API-Referenz](/api-reference/introduction).
+</Tip>

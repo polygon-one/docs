@@ -8,32 +8,80 @@
     "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
+  "languages": [
+    {
+      "language": "de",
+      "default": true
+    }
+  ],
   "navigation": {
     "tabs": [
       {
         "tab": "Helpcenter",
         "groups": [
           {
-            "group": "Pre Compliance",
+            "group": "Übersicht",
             "pages": [
-              "helpcenter/pre-compliance/data-management",
-              "helpcenter/pre-compliance/supplier-onboarding",
-              "helpcenter/pre-compliance/compliance",
-              "helpcenter/pre-compliance/eudr-reports"
+              "de/helpcenter/uebersicht"
             ]
           },
           {
-            "group": "Due Diligence Statements",
+            "group": "Onboarding",
             "pages": [
-              "helpcenter/dds/data-management",
-              "helpcenter/dds/dds-submission"
+              "de/helpcenter/onboarding/firmenaccount",
+              "de/helpcenter/onboarding/traces"
             ]
           },
           {
-            "group": "Profile Management",
+            "group": "Datenhaltung",
             "pages": [
-              "helpcenter/profile/required-information",
-              "helpcenter/profile/managing-profile"
+              "de/helpcenter/datenhaltung/lieferanten",
+              "de/helpcenter/datenhaltung/artikel"
+            ]
+          },
+          {
+            "group": "EUDR Analyse",
+            "pages": [
+              "de/helpcenter/eudr-analyse"
+            ]
+          },
+          {
+            "group": "Datensammlung",
+            "pages": [
+              "de/helpcenter/datensammlung/evidence-upload",
+              "de/helpcenter/datensammlung/supplier-onboarding",
+              "de/helpcenter/datensammlung/risiko-behebung",
+              "de/helpcenter/datensammlung/berichte"
+            ]
+          },
+          {
+            "group": "Outbound Artikel",
+            "pages": [
+              "de/helpcenter/outbound-artikel"
+            ]
+          },
+          {
+            "group": "DDS & Bestellungen",
+            "pages": [
+              "de/helpcenter/dds-bestellungen/import-erstellung",
+              "de/helpcenter/dds-bestellungen/dds-eingehend",
+              "de/helpcenter/dds-bestellungen/dds-ausgehend",
+              "de/helpcenter/dds-bestellungen/export"
+            ]
+          },
+          {
+            "group": "Lieferantenansicht",
+            "pages": [
+              "de/helpcenter/lieferantenansicht"
+            ]
+          },
+          {
+            "group": "Optional",
+            "pages": [
+              "de/helpcenter/optional/supply-chain",
+              "de/helpcenter/optional/dokumente",
+              "de/helpcenter/optional/karte",
+              "de/helpcenter/optional/contact-center"
             ]
           }
         ]

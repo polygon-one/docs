@@ -1,0 +1,97 @@
+---
+title: "Evidence Upload"
+description: "Dokumente und Geodaten für die EUDR-Compliance hochladen"
+icon: "upload"
+---
+
+## Übersicht
+
+Über den **Nachweis-Upload** laden Sie die erforderlichen Compliance-Nachweise für Ihre EUDR-relevanten Artikel hoch. Polygon One analysiert hochgeladene Dokumente automatisch mit KI und klassifiziert sie entsprechend.
+
+## Dokumente hochladen
+
+### Unterstützte Formate
+
+- PDF-Dokumente
+- Bilder (PNG, JPEG, TIFF)
+- Text-Dateien
+- CSV
+- GeoJSON (für Geodaten)
+- Maximale Dateigröße: **50 MB**
+
+### Beispiele für akzeptierte Dokumente
+
+- FLEGT-Lizenzen
+- FSC/PEFC/ISCC/Rainforest Alliance Zertifikate
+- Landbesitztitel und Nutzungsrechte
+- Ernteerlaubnisse und Umweltgenehmigungen
+- Zollanmeldungen
+
+### Nachweis hochladen
+
+<Steps>
+  <Step title="Artikel auswählen">
+    Navigieren Sie zum gewünschten Artikel im Compliance-Dashboard.
+  </Step>
+  <Step title="Upload starten">
+    Klicken Sie auf **"Nachweis hochladen"** und wählen Sie die Datei aus.
+  </Step>
+  <Step title="Zertifizierungsprogramm (optional)">
+    Falls es sich um eine Nachhaltigkeitszertifizierung handelt, wählen Sie das **Zertifizierungssystem** (z.B. FSC, PEFC, RSPO) aus. Dies verbessert die Klassifizierungsgenauigkeit.
+  </Step>
+  <Step title="Notiz hinzufügen (optional)">
+    Fügen Sie Kontext hinzu, der bei der Dokumentenanalyse helfen könnte (z.B. "Ursprungszeugnis für Sendung #12345").
+  </Step>
+  <Step title="Hochladen & Analysieren">
+    Klicken Sie auf **"Hochladen & Analysieren"**. Die KI analysiert und klassifiziert das Dokument automatisch.
+  </Step>
+</Steps>
+
+<Info>
+Hochgeladene Dokumente werden gemäß EUDR-Vorschriften automatisch **5 Jahre aufbewahrt**.
+</Info>
+
+### Zertifizierungen
+
+Wenn Sie eine Nachhaltigkeitszertifizierung hochladen (z.B. FSC, PEFC, ISCC), analysiert Polygon One automatisch, welche **rechtlichen Compliance-Kategorien** durch das Zertifikat abgedeckt werden:
+
+- Landnutzungsrechte
+- Umweltschutz
+- Forstvorschriften
+- Rechte Dritter
+- Arbeits- & Menschenrechte
+- Steuern, Handel & Zoll
+- Anti-Korruption
+
+Abgedeckte Kategorien werden im rechtlichen Fragebogen automatisch vormarkiert.
+
+## Geodaten erfassen
+
+Geodaten (Produktionsstandorte) sind ein zentraler Bestandteil der EUDR-Compliance. Sie können Geodaten auf mehreren Wegen bereitstellen:
+
+### Geodaten auf der Karte zeichnen
+
+<Steps>
+  <Step title="Kartenansicht öffnen">
+    Navigieren Sie zum Artikel und öffnen Sie die Kartenansicht.
+  </Step>
+  <Step title="Fläche zeichnen">
+    Klicken Sie auf **"Fläche zeichnen"** und markieren Sie die Eckpunkte Ihres Produktionsgebiets auf der Karte. Drücken Sie **Escape**, um das Zeichnen abzubrechen.
+  </Step>
+  <Step title="Details eingeben">
+    Geben Sie Flächenname, Lieferant, Artikel, Rohstoffgruppe und ggf. den wissenschaftlichen Namen (bei Holz erforderlich) und Produktionszeitraum ein.
+  </Step>
+  <Step title="Speichern">
+    Bestätigen Sie die Details und speichern Sie die Fläche. Die Satellitenanalyse startet automatisch.
+  </Step>
+</Steps>
+
+### Geodaten importieren
+
+Alternativ können Sie Geodaten als Datei importieren:
+- **GeoJSON** — direkt hochladen
+- **CSV/XLSX mit WKT-Geometrie** — über die Import-Funktion unter **Einstellungen → CSV-Importe → Flächen**
+
+<Tip>
+Verwenden Sie das Polygon-Werkzeug für größere Flächen und das Punkt-Werkzeug für kleine Produktionsflächen unter 4 Hektar.
+</Tip>

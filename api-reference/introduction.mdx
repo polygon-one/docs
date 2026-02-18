@@ -1,49 +1,100 @@
 ---
 title: 'Introduction'
-description: 'Integrate your ERP system with the EUDR Compliance Platform'
+description: 'Integrate your ERP system with the Polygon One EUDR Compliance Platform'
 ---
 
-## Welcome
+## Overview
 
-This API allows you to programmatically manage your EUDR compliance data. It is designed to be integrated directly with your ERP system (SAP, Oracle, Microsoft Dynamics, etc.) for server-to-server communication.
+The Polygon One API allows you to programmatically manage your EUDR compliance data. It is designed for server-to-server integration with your ERP system (SAP, Oracle, Microsoft Dynamics, etc.).
 
+**What you can do with the API:**
+
+- **Articles** — Create, update, and query articles. EUDR relevance is determined automatically from the HS code.
+- **Suppliers** — Manage supplier data and link suppliers to articles.
+- **Orders** — Import purchase and sale orders (single or batch). Orders can be auto-assigned to DDS statements.
+- **DDS Statements** — Create and manage Due Diligence Statements for TRACES submission.
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens.
+All API endpoints require a Bearer token. Generate your API key in the Polygon One dashboard:
 
-1.  Log in to your dashboard.
-2.  Navigate to **Settings > API Keys**.
-3.  Generate a new key.
+1. Navigate to **Settings > API Keys**
+2. Click **Create API Key**
+3. Select the required permission scopes (e.g. `articles:read`, `orders:write`)
+4. Copy the generated key
 
-Include this key in the `Authorization` header of every request:
+Include the key in the `Authorization` header of every request:
 
 ```bash
 Authorization: Bearer eudr_8f7d2a...
 ```
 
 <Warning>
-  **Security Notice:** API Keys are secret tokens used to authenticate your application.
-  They should be stored securely in your server's environment variables and **never** exposed in client-side code (browsers).
+  API keys are secret credentials for server-to-server communication. Store them in environment variables and **never** expose them in client-side code.
 </Warning>
 
 ## Base URL
 
-All requests should be made to:
+All API requests should be made to:
 
-```bash
-https://api.yourdomain.com
+```
+https://app.polygonone.com
+```
+
+## Permission Scopes
+
+Each API key is assigned specific permission scopes that control access:
+
+| Scope | Description |
+| :--- | :--- |
+| `articles:read` | Read articles |
+| `articles:write` | Create, update, delete articles |
+| `suppliers:read` | Read suppliers |
+| `suppliers:write` | Create, update, delete suppliers |
+| `orders:read` | Read orders |
+| `orders:write` | Create, update, delete orders |
+| `dds:read` | Read DDS statements |
+| `dds:write` | Create, update, delete DDS statements |
+
+## Response Format
+
+Successful responses return JSON data directly. List endpoints return arrays, single-resource endpoints return objects.
+
+**Single resource creation** returns HTTP `201`:
+```json
+{
+  "article": { "id": "...", "name": "..." }
+}
+```
+
+**Batch imports** return HTTP `200` with a summary:
+```json
+{
+  "imported": [{ "id": "...", "orderNumber": "ORD-001" }],
+  "failed": [{ "orderNumber": "ORD-002", "error": "Supplier not found" }],
+  "skipped": 0
+}
 ```
 
 ## Error Handling
 
-The API uses standard HTTP status codes to indicate the success or failure of requests.
+The API uses standard HTTP status codes:
 
 | Code | Description |
 | :--- | :--- |
-| `200` | **OK** - The request was successful. |
-| `400` | **Bad Request** - Invalid input data (e.g., malformed JSON or missing required fields). |
-| `401` | **Unauthorized** - Invalid or missing API key. |
-| `403` | **Forbidden** - The API key does not have permission to access this resource. |
-| `422` | **Unprocessable Entity** - Validation failed (e.g., duplicate internal article number). |
-| `500` | **Internal Server Error** - Something went wrong on our end. |
+| `200` | **OK** — Request successful |
+| `201` | **Created** — Resource created successfully |
+| `400` | **Bad Request** — Invalid input data or validation errors |
+| `401` | **Unauthorized** — Invalid or missing API key |
+| `403` | **Forbidden** — API key lacks required permissions, or account setup is incomplete |
+| `404` | **Not Found** — Resource does not exist or does not belong to your company |
+| `500` | **Internal Server Error** — Something went wrong on our end |
+
+Error responses include an `error` field and optionally `details`:
+
+```json
+{
+  "error": "Validation failed",
+  "details": [{ "path": ["hsCode"], "message": "Commodity is required." }]
+}
+```

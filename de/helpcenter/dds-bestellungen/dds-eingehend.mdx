@@ -1,0 +1,83 @@
+---
+title: "DDS Eingehend"
+description: "Due Diligence Statements für eingehende Bestellungen erstellen und verwalten"
+icon: "arrow-down-to-line"
+---
+
+## Übersicht
+
+Für eingehende Waren (Import in die EU) müssen **Sorgfaltspflichterklärungen (Due Diligence Statements / DDS)** erstellt und über EU TRACES eingereicht werden. Polygon One unterstützt sowohl die manuelle als auch die automatische Erstellung und Zuweisung.
+
+Die Seite **DDS → Eingehend** zeigt zwei Bereiche:
+1. **Bestellungen ohne DDS-Referenz** — Bestellungen, die noch keiner DDS zugewiesen sind
+2. **Import-Sorgfaltserklärungen** — Übersicht aller erstellten DDS
+
+## DDS erstellen
+
+<Steps>
+  <Step title="DDS erstellen starten">
+    Klicken Sie auf **"DDS erstellen"** — es öffnet sich ein mehrstufiger Assistent.
+  </Step>
+  <Step title="Schritt 1: Allgemein">
+    Wählen Sie die **Aktivität** (Import, Export, Handel oder Inländische Produktion) und den **Marktteilnehmertyp** (Marktteilnehmer, Händler, oder Bevollmächtigter Vertreter). Ihre Firmendaten werden automatisch vorausgefüllt.
+  </Step>
+  <Step title="Schritt 2: Lieferant & Artikel">
+    Wählen Sie den **Lieferanten** und die spezifischen **Artikel** aus. Geben Sie für jeden Artikel die **Menge in kg** an.
+  </Step>
+  <Step title="Schritt 3: Bestätigung">
+    Überprüfen Sie die Zusammenfassung, bestätigen Sie die Sorgfaltspflicht gemäß **Verordnung (EU) 2023/1115** und geben Sie Ihren **vollständigen Namen** als Unterschrift ein.
+  </Step>
+  <Step title="Einreichen oder als Entwurf speichern">
+    Wählen Sie **"Erstellen & Einreichen"** für die direkte Übermittlung an TRACES, oder **"Entwurf erstellen"**, um die DDS später einzureichen.
+  </Step>
+</Steps>
+
+## Externe DDS verknüpfen
+
+Wenn Sie bereits eine DDS von einem vorgelagerten Lieferanten erhalten haben, können Sie diese über **"Externe DDS verknüpfen"** einbinden:
+
+1. Geben Sie die **Referenznummer** und optional die **Verifizierungsnummer** ein.
+2. Wählen Sie Lieferant und Artikel mit Mengen aus.
+3. Die externe DDS wird in Ihre Übersicht integriert.
+
+## DDS-Zuweisung zu Bestellungen
+
+Sobald eine DDS den Status **Validiert** oder **Eingereicht** hat, können Sie Bestellungen zuweisen:
+
+1. Klicken Sie bei einer Bestellung ohne DDS auf **"DDS zuweisen"**.
+2. Das System zeigt nur passende DDS an (gleicher Lieferant, passende Artikel, genügend Restvolumen).
+3. Wählen Sie die DDS aus und bestätigen Sie die Zuweisung.
+
+## DDS-Status
+
+| Status | Beschreibung |
+|--------|-------------|
+| **Entwurf** | DDS wurde erstellt, aber noch nicht eingereicht |
+| **Wird verarbeitet** | DDS wird an TRACES übermittelt |
+| **Eingereicht** | DDS wurde erfolgreich an EU TRACES übermittelt |
+| **Validiert** | DDS wurde von EU TRACES akzeptiert |
+| **Wird geprüft** | DDS befindet sich in der Prüfung durch die Behörde |
+| **Korrektur angefordert** | Die Behörde hat eine Korrektur angefordert |
+| **Abgelehnt** | DDS wurde von TRACES abgelehnt |
+| **Fehlgeschlagen** | Technischer Fehler bei der Einreichung |
+| **Extern** | DDS eines vorgelagerten Lieferanten |
+
+## Automatisierung
+
+Unter **Einstellungen → Automatisierungen** können Sie DDS-Prozesse automatisieren:
+
+- **Automatische DDS-Zuweisung** — Neue Bestellungen werden automatisch passenden offenen DDS zugewiesen
+- **Automatische DDS-Erstellung** — Bei fehlender passender DDS wird automatisch eine neue erstellt
+- **Standard-DDS-Volumen** — Standardvolumen für automatisch erstellte DDS
+
+## Volumen-Tracking
+
+Polygon One verfolgt automatisch das **zugewiesene Volumen** im Vergleich zum **Gesamtvolumen der DDS**.
+
+<Warning>
+Das System verhindert die Zuweisung einer Bestellung, wenn diese die verbleibende Kapazität der DDS überschreiten würde. In diesem Fall können Sie über die **Überlauf-DDS**-Funktion automatisch eine neue DDS mit derselben Konfiguration erstellen.
+</Warning>
+
+<Note>
+Stellen Sie sicher, dass Ihre **EU TRACES Zugangsdaten** (Benutzername + Web Service Access Token) in den Einstellungen hinterlegt sind. Siehe [TRACES-Registrierung](/de/helpcenter/onboarding/traces).
+</Note>

@@ -1,0 +1,104 @@
+---
+title: "Lieferantenansicht"
+description: "Schritt-für-Schritt Anleitung für das Supplier Portal"
+icon: "eye"
+---
+
+## Übersicht
+
+Die **Lieferantenansicht** (Supplier Portal) ist der Bereich, den Ihre Lieferanten sehen, wenn sie über den Einladungslink auf Polygon One zugreifen. Hier stellen sie die angeforderten EUDR-Compliance-Nachweise bereit.
+
+<Info>
+Lieferanten benötigen **keinen eigenen Account**. Der Zugang erfolgt über einen sicheren Link, der per E-Mail zugestellt wird. Der Link kann jederzeit erneut geöffnet werden.
+</Info>
+
+## Schritt-für-Schritt Anleitung
+
+### 1. Zugang und Begrüßung
+
+Der Lieferant klickt auf den Link in der E-Mail und sieht die Begrüßungsseite mit dem Titel **"EUDR-Informationsanfrage"** und einer persönlichen Willkommensnachricht.
+
+### 2. Allgemeine Informationen
+
+<Steps>
+  <Step title="Firmenname eingeben">
+    Der Lieferant gibt seinen offiziellen Firmennamen ein.
+  </Step>
+  <Step title="Land auswählen">
+    Das Land des Unternehmens wird ausgewählt.
+  </Step>
+  <Step title="Fortfahren">
+    Mit **"Fortfahren"** geht es zum nächsten Schritt.
+  </Step>
+</Steps>
+
+### 3. Geo-Informationen bereitstellen
+
+Für jeden angeforderten Artikel müssen Geodaten bereitgestellt werden:
+
+<Steps>
+  <Step title="Rohstoffproduzent angeben">
+    Name des Rohstoffproduzenten und Produktionsland eingeben.
+  </Step>
+  <Step title="Geodaten bereitstellen">
+    Über die interaktive Karte werden Produktionsflächen angegeben:
+    - **Auf Karte zeichnen** — Eckpunkte der Produktionsfläche markieren
+    - **GeoJSON hochladen** — Vorhandene Geodaten als Datei hochladen
+  </Step>
+  <Step title="Für alle Artikel wiederholen">
+    Geodaten werden für alle angeforderten Artikel bereitgestellt. Artikel ohne Geodaten werden als fehlend markiert.
+  </Step>
+</Steps>
+
+<Tip>
+Es ist nicht notwendig, alle Artikel gleichzeitig zu bearbeiten. Der Lieferant kann den Link jederzeit erneut öffnen und fehlende Daten nachliefern.
+</Tip>
+
+### 4. Sub-Lieferanten einladen (optional)
+
+Falls der Lieferant Materialien von weiteren Unterlieferanten bezieht, kann er diese im Portal einladen:
+
+- **Eingangsartikel** beschreiben (Name, Artikelnummer, HS-Code)
+- **Lieferantendaten** des Unterlieferanten eingeben (Firma, E-Mail)
+- Optional eine **persönliche Nachricht** hinzufügen
+- Die Einladung wird per E-Mail an den Unterlieferanten gesendet
+
+### 5. Rechtlicher Compliance-Fragebogen
+
+<Steps>
+  <Step title="FLEGT-Prüfung (bei Holzprodukten aus VPA-Ländern)">
+    Falls zutreffend, kann eine gültige **FLEGT-Lizenz** hochgeladen werden. Bei gültiger Lizenz wird der detaillierte Fragebogen übersprungen.
+  </Step>
+  <Step title="Nachhaltigkeitszertifizierung (optional)">
+    Der Lieferant kann eine Zertifizierung (FSC, PEFC, ISCC, etc.) hochladen. Die KI analysiert automatisch, welche Compliance-Kategorien abgedeckt werden.
+  </Step>
+  <Step title="Fragebogen beantworten">
+    Ein länderspezifischer Fragebogen wird ausgefüllt — unterteilt in Kategorien:
+    - Allgemeine Fragen
+    - Lieferkette & Risikobewertung
+    - Landnutzungsrechte & Eigentum
+    - Umwelt- & Naturschutzgesetze
+    - Forstrecht (bei Holzprodukten)
+    - Rechte Dritter & indigener Gemeinschaften
+    - Arbeits- & Menschenrechte
+    - Steuer-, Handels- & Zollvorschriften
+    - Antikorruptionsmaßnahmen
+    - Weitere Compliance-Maßnahmen
+
+    Für jede Kategorie können Nachweisdokumente hochgeladen werden (PDF, Word, ODT, RTF, TXT).
+  </Step>
+  <Step title="Einreichung bestätigen">
+    Der Lieferant prüft seine Antworten und klickt auf **"Selbstbewertung einreichen"**. Unbeantwortete Fragen und fehlende Dokumente werden als Warnung angezeigt.
+  </Step>
+</Steps>
+
+### 6. Abschluss
+
+Nach der Einreichung werden die Daten automatisch von Polygon One analysiert:
+- **Satellitenbildauswertung** der Geodaten für Entwaldungsrisiken
+- **KI-Dokumentenvalidierung** der hochgeladenen Nachweise
+- **Compliance-Berechnung** basierend auf Fragebogen und Nachweisen
+
+<Note>
+Der Lieferant kann den Link jederzeit erneut öffnen, um den Status seiner Einreichungen einzusehen, fehlende Daten nachzuliefern oder Informationen zu aktualisieren.
+</Note>
