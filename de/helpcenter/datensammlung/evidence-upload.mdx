@@ -1,5 +1,5 @@
 ---
-title: "Evidence Upload"
+title: "Nachweise hochladen"
 description: "Dokumente und Geodaten für die EUDR-Compliance hochladen"
 icon: "upload"
 ---
@@ -72,6 +72,8 @@ Wenn Sie eine Nachhaltigkeitszertifizierung hochladen (z.B. FSC, PEFC, ISCC), an
 - Anti-Korruption
 
 Abgedeckte Kategorien werden im rechtlichen Fragebogen automatisch vormarkiert.
+Gibt es grobe Unstimmmigkeiten in dem hochgeladenen Dokument, werden diese von unserer Analyse erkannt und markiert. In diesem Sonderfall können wir nicht automatisch das Dokument anerkennen, sondern es muss durch
+Sie und einer manuellen Prüfung bestätigt werden. Mehr Details zu diesem Prozess finden sie hier:
 
 ## Geodaten erfassen
 
@@ -91,7 +93,7 @@ Geodaten (Produktionsstandorte) sind ein zentraler Bestandteil der EUDR-Complian
     </Frame>
   </Step>
   <Step title="Details eingeben">
-    Geben Sie Flächenname, Lieferant, Artikel, Rohstoffgruppe und ggf. den wissenschaftlichen Namen (bei Holz erforderlich) und Produktionszeitraum ein.
+    Geben Sie Flächenname, Lieferant, Artikel, ggf. den wissenschaftlichen Namen (bei Holz erforderlich) und Produktionszeitraum ein.
   </Step>
   <Step title="Speichern">
     Bestätigen Sie die Details und speichern Sie die Fläche. Die Satellitenanalyse startet automatisch.
@@ -100,14 +102,14 @@ Geodaten (Produktionsstandorte) sind ein zentraler Bestandteil der EUDR-Complian
 
 ### Geodaten importieren
 
-Alternativ können Sie Geodaten als Datei importieren:
-- **GeoJSON** — direkt hochladen
-- **CSV/XLSX mit WKT-Geometrie** — über die Import-Funktion unter **Einstellungen → CSV-Importe → Flächen**
+Alternativ können Sie Geodaten als Datei importieren. Hier zu klicken sie oben Links auf das Upload Symbol.
 
-<Frame caption="Geodaten-Import Dialog">
+<Frame caption="Geodaten-Import">
   <img src="/images/helpcenter/datensammlung/evidence-geodaten-import.png" />
 </Frame>
 
-<Tip>
-Verwenden Sie das Polygon-Werkzeug für größere Flächen und das Punkt-Werkzeug für kleine Produktionsflächen unter 4 Hektar.
-</Tip>
+Wir akzeptieren folgende Dateiformate:
+
+- **GeoJSON** — direkt hochladen
+- **CSV/XLSX mit WKT-Geometrie** — über die Import-Funktion unter **Einstellungen → CSV-Importe → Flächen**
+

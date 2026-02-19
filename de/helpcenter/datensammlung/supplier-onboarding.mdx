@@ -1,6 +1,6 @@
 ---
 title: "Supplier Onboarding"
-description: "Lieferanten einladen und Informationen über das Supplier Portal anfordern"
+description: "Lieferanten einladen und Informationen anfordern"
 icon: "users"
 ---
 
@@ -22,7 +22,7 @@ Wenn Sie die benötigten Nachweise nicht selbst vorliegen haben, können Sie Ihr
     </Frame>
   </Step>
   <Step title="Lieferant erhält E-Mail">
-    Der Lieferant erhält eine E-Mail mit einem **sicheren Link** zum Supplier Portal. Kein Account erforderlich.
+    Der Lieferant erhält eine E-Mail mit einem **sicheren Link** zum Lieferanten Onboarding. Kein Account erforderlich.
   </Step>
   <Step title="Datenbereitstellung">
     Der Lieferant stellt Geodaten, Dokumente und rechtliche Informationen über das Portal bereit.
@@ -48,16 +48,18 @@ Im Supplier Portal durchlaufen Ihre Lieferanten folgende Schritte:
 
 <AccordionGroup>
   <Accordion title="1. Allgemeine Informationen" icon="building">
-    Firmenname und Land des Lieferanten.
+    Firmenname und Land bzw. Anschrift des Lieferanten.
   </Accordion>
   <Accordion title="2. Geodaten (Produktionsstandorte)" icon="map-location-dot">
     Für jeden Artikel werden Produktionsstandorte angegeben:
     - **Produktionsland** auswählen
     - **Name des Rohstoffproduzenten** angeben
     - Flächen auf der **interaktiven Karte zeichnen** oder **GeoJSON hochladen**
+    - Details für die eingezeichneten Produktionsstätten (Produktionszeitraum, wissenschaftlicher Name des Rohstoff etc.)
   </Accordion>
   <Accordion title="3. Sub-Lieferanten (optional)" icon="users">
     Falls der Lieferant Materialien von weiteren Unterlieferanten bezieht, kann er diese im Portal einladen. Eingangsartikel werden mit HS-Code und Artikelnummer erfasst.
+    Eingangsartikel werden autoamtisch über unsere Software mit dem von Ihnen importierten Artikel verknüpft, so dass wir die Supply Chain upstream zurückverfolgen können.
   </Accordion>
   <Accordion title="4. Rechtliche Compliance" icon="file-contract">
     Ein umfangreicher Fragebogen zu:

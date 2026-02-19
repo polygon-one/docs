@@ -33,7 +33,7 @@
             ]
           },
           {
-            "group": "Datenhaltung",
+            "group": "Stammdaten",
             "pages": [
               "de/helpcenter/datenhaltung/lieferanten",
               "de/helpcenter/datenhaltung/artikel"
