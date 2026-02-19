@@ -42,18 +42,37 @@ Polygon One analysiert die übermittelten Geodaten mithilfe mehrerer Satellitend
   <Step title="Mitigieren klicken">
     Klicken Sie bei einem offenen Risikokennzeichen auf **"Mitigieren"**.
   </Step>
-  <Step title="Nachweis bereitstellen">
-    Sie haben drei Optionen:
-    - **Dokument hochladen** — Laden Sie einen Nachweis hoch (z.B. Waldbewirtschaftungsplan, Zertifizierung)
-    - **Bestehendes Zertifikat** — Verwenden Sie ein bereits verifiziertes Zertifikat
-    - **Vom Lieferanten anfordern** — Senden Sie eine E-Mail-Anfrage an den Lieferanten
+  <Step title="Mitigierungsdialog — Nachweis bereitstellen">
+    Im Mitigierungsdialog stehen Ihnen drei Optionen zur Verfügung:
+
+    **Option 1: Dokument hochladen**
+    - Laden Sie einen Nachweis direkt hoch (z.B. Waldbewirtschaftungsplan, behördliche Genehmigung, Zertifizierung).
+    - Unterstützte Formate: PDF, PNG, JPEG, TIFF, CSV, GeoJSON oder Textdateien (max. 50 MB).
+    - Optional können Sie ein Zertifizierungsschema auswählen (z.B. FSC, PEFC, RSPO), damit das System den Nachweis automatisch den passenden Compliance-Kategorien zuordnet.
+    - Fügen Sie eine **Notiz** hinzu, um den Kontext des Dokuments zu erläutern.
+
+    **Option 2: Bestehendes Zertifikat verknüpfen**
+    - Wählen Sie ein bereits hochgeladenes und verifiziertes Zertifikat aus Ihrer Dokumentenbibliothek.
+    - Das System prüft automatisch, welche Risikokennzeichen durch das Zertifikat abgedeckt werden.
+
+    **Option 3: Vom Lieferanten anfordern**
+    - Senden Sie eine E-Mail-Anfrage direkt an den Lieferanten über die Plattform.
+    - Der Lieferant erhält eine Benachrichtigung mit dem spezifischen Risikokennzeichen und kann den Nachweis eigenständig einreichen.
 
     <Frame caption="Risiko-Mitigierungsdialog mit Upload- und Anforderungsoptionen">
       <img src="/images/helpcenter/datensammlung/risiko-beheben-dialog.png" />
     </Frame>
   </Step>
-  <Step title="KI-Validierung">
-    Die KI prüft den eingereichten Nachweis automatisch auf Relevanz und Vertrauenswürdigkeit.
+  <Step title="KI-Validierung & Ergebnis">
+    Nach der Einreichung wird der Nachweis automatisch durch die KI geprüft:
+    - **Dokumenttyp-Erkennung** — Das System klassifiziert den Dokumenttyp und ordnet ihn den relevanten Risikokennzeichen zu.
+    - **Konfidenz-Bewertung** — Die KI vergibt eine Vertrauensstufe für den eingereichten Nachweis.
+    - **Automatische Entscheidung** — Bei hoher Konfidenz wird der Nachweis automatisch akzeptiert. Bei niedriger Konfidenz oder kritischen Hinweisen wird eine manuelle Überprüfung ausgelöst.
+
+    Mögliche Ergebnisse:
+    - **Akzeptiert** → Der Status des Risikokennzeichens wechselt zu **„Risiko mitigiert"**.
+    - **Manuelle Prüfung erforderlich** → Der Status wechselt zu **„Ausstehende Prüfung"**. Sie werden per Benachrichtigung über das Ergebnis informiert.
+    - **Abgelehnt** → Der Nachweis war unzureichend. Reichen Sie ein neues Dokument ein.
   </Step>
 </Steps>
 
@@ -81,12 +100,26 @@ Das System identifiziert rechtliche Risiken basierend auf dem Fragebogen und den
 
 ### Rechtliche Risiken mitigieren
 
-Für jede Kategorie mit identifiziertem Risiko:
+<Steps>
+  <Step title="Kategorie auswählen">
+    Klicken Sie auf **"Mitigieren"** bei der betroffenen Risikokategorie. Der Mitigierungsdialog öffnet sich und zeigt die spezifische Kategorie und deren Anforderungen an.
+  </Step>
+  <Step title="Nachweis im Dialog bereitstellen">
+    Wie bei der Geo-Risiko-Mitigation stehen Ihnen dieselben drei Optionen zur Verfügung:
+    - **Dokument hochladen** — z.B. Landbesitzurkunden, Arbeitsinspektionsberichte, Umweltgenehmigungen, Steuerbescheinigungen.
+    - **Bestehendes Zertifikat verknüpfen** — Anerkannte Zertifizierungen (FSC, PEFC, SFI, ISCC, Rainforest Alliance, RSPO, Fairtrade, RTRS, EU Organic) können automatisch mehrere Kategorien abdecken.
+    - **Vom Lieferanten anfordern** — Der Lieferant wird per E-Mail über die fehlende Kategorie benachrichtigt.
 
-1. Klicken Sie auf **"Mitigieren"** bei der betroffenen Kategorie.
-2. Laden Sie ein Nachweisdokument hoch, verwenden Sie ein bestehendes Zertifikat, oder fordern Sie die Dokumentation vom Lieferanten an.
-3. Fügen Sie optional eine Notiz mit Kontext hinzu.
-4. Die KI validiert den eingereichten Nachweis.
+    Fügen Sie eine **Notiz** hinzu, um den Kontext des Nachweises zu beschreiben (z.B. „Gültig bis 2027, ausgestellt von der Bezirksregierung").
+  </Step>
+  <Step title="Validierung abwarten">
+    Die KI validiert den eingereichten Nachweis automatisch. Der Validierungsstatus wird in der Kategorie-Übersicht angezeigt.
+  </Step>
+</Steps>
+
+<Tip>
+Für **Holzprodukte aus FLEGT-VPA-Ländern** gibt es einen Schnellweg: Das Hochladen einer gültigen FLEGT-Lizenz erfüllt die rechtlichen Compliance-Anforderungen automatisch für alle Kategorien.
+</Tip>
 
 ### Validierungsstatus
 

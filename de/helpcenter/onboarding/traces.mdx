@@ -12,6 +12,7 @@ EU TRACES NT (Trade Control and Expert System) ist das offizielle System der Eur
 
 <Info>
 Sie benötigen EU TRACES Zugangsdaten, sobald Sie Due Diligence Statements erstellen und an die EU übermitteln möchten. Für die vorgelagerten Schritte (Datenhaltung, Analyse, Datensammlung) ist TRACES **nicht** erforderlich.
+Außerdem haben sie auch die Möglichkeit DDS Vorlagen zu erstellen und nicht an direkt an Traces zu übermitteln.
 </Info>
 
 ## Vereinfacht erklärt
@@ -34,10 +35,6 @@ Lesen Sie die offizielle EUDR API-Dokumentation, um die technischen Anforderunge
 Die offizielle EUDR-Dokumentation ist sehr technisch. Wenn Sie zum ersten Mal mit dem EUDR-System arbeiten, können Sie diesen Schritt überspringen und später darauf zurückkommen. Polygon One bietet eine benutzerfreundliche Oberfläche für die meisten Vorgänge.
 </Note>
 
-<Card title="EUDR API Specifications for Operators" icon="file-lines" href="https://food.ec.europa.eu/document/download/98be6baf-acf0-4fca-965f-835de108a205_en">
-  Offizielle technische Spezifikationen und Compliance-Anforderungen (v1.4)
-</Card>
-
 ## Schritt 2: EU Login Account erstellen
 
 Registrieren Sie sich für einen EU Login Account auf dem offiziellen EUDR TRACES Portal. EU Login ist der zentrale Authentifizierungsdienst der Europäischen Kommission.
@@ -46,21 +43,17 @@ Registrieren Sie sich für einen EU Login Account auf dem offiziellen EUDR TRACE
   <img src="/images/helpcenter/onboarding/traces-eu-login.png" />
 </Frame>
 
-<Card title="EU Login erstellen — Offizielle Anleitung" icon="user-plus" href="https://webgate.ec.europa.eu/cas/login">
+<Card title="EU Login erstellen — Offizielle Anleitung" icon="user-plus" href="https://trusted-digital-identity.europa.eu/creating-managing-and-using-your-eu-login-account/how-do-i-create-my-eu-login-account_en">
   Folgen Sie der offiziellen Anleitung zur Erstellung Ihres EU Login Accounts.
 </Card>
 
-<Card title="EUDR Acceptance Portal (Testumgebung)" icon="globe" href="https://acceptance.eudr.webcloud.ec.europa.eu/tracesnt/login">
+<Card title="EUDR Acceptance Portal (Testumgebung)" icon="globe" href="https://sorry.eudr.webcloud.ec.europa.eu/">
   Nutzen Sie die Acceptance-Umgebung zum Testen.
 </Card>
 
 ## Schritt 3: Operator-Entity in TRACES NT erstellen
 
 Im EUDR Portal müssen Sie Ihr Unternehmen als **Operator** mit spezifischen Aktivitäten und vollständigen Firmendaten registrieren. Dieser Schritt bestimmt Ihre Rolle in der Lieferkette.
-
-<Frame caption="Operator-Erstellung im TRACES NT Portal">
-  <img src="/images/helpcenter/onboarding/traces-operator-erstellen.png" />
-</Frame>
 
 <Warning>
 - Die Operator-Entity muss von einem Administrator **validiert** werden, bevor Benutzer zugewiesen werden können
@@ -148,9 +141,9 @@ Hinterlegen Sie Ihre EUDR-Zugangsdaten in Polygon One unter **Einstellungen → 
 
 | Feld | Beschreibung |
 |------|-------------|
+| **EORI Nummer** | Ihre EORI Nummer. Diese wird fest benötigt um DDS einzureichen |
 | **TRACES Benutzername** | Ihr registrierter EU TRACES Benutzername (Format: `n00ixxx`) |
-| **Web Service Authentication Key (TEST)** | Key für die EUDR Acceptance-Umgebung (Testumgebung) |
-| **Web Service Authentication Key (LIVE)** | Key für die EUDR Produktionsumgebung (optional, für den Echtbetrieb) |
+| **Traces Web Service Access Token** | Key für die EUDR Umgebung (TEST oder PRODUKTIV) |
 
 Klicken Sie auf **"Speichern"**, um die Konfiguration abzuschließen.
 

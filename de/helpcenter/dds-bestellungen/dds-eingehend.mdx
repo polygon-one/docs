@@ -6,10 +6,10 @@ icon: "arrow-down-to-line"
 
 ## Übersicht
 
-Für eingehende Waren (Import in die EU) müssen **Sorgfaltspflichterklärungen (Due Diligence Statements / DDS)** erstellt und über EU TRACES eingereicht werden. Polygon One unterstützt sowohl die manuelle als auch die automatische Erstellung und Zuweisung.
+Für eingehende Waren (Import in die EU) müssen gegebenenfalls **Sorgfaltspflichterklärungen (Due Diligence Statements / DDS)** erstellt und über EU TRACES eingereicht werden. Polygon One unterstützt sowohl die manuelle als auch die automatische Erstellung und Zuweisung.
 
-Die Seite **DDS → Eingehend** zeigt zwei Bereiche:
-1. **Bestellungen ohne DDS-Referenz** — Bestellungen, die noch keiner DDS zugewiesen sind
+Die Seite **Sorgfaltspflichterklärungen → Eingehend** zeigt zwei Bereiche:
+1. **Bestellungen ohne DDS-Referenz** — (Einkauf) Bestellungen, die noch keiner DDS zugewiesen sind
 2. **Import-Sorgfaltserklärungen** — Übersicht aller erstellten DDS
 
 <Frame caption="DDS Eingehend — Übersicht mit Bestellungen und DDS-Liste">
@@ -23,7 +23,7 @@ Die Seite **DDS → Eingehend** zeigt zwei Bereiche:
     Klicken Sie auf **"DDS erstellen"** — es öffnet sich ein mehrstufiger Assistent.
   </Step>
   <Step title="Schritt 1: Allgemein">
-    Wählen Sie die **Aktivität** (Import, Export, Handel oder Inländische Produktion) und den **Marktteilnehmertyp** (Marktteilnehmer, Händler, oder Bevollmächtigter Vertreter). Ihre Firmendaten werden automatisch vorausgefüllt.
+    Wählen Sie die **Aktivität** (Import, Export oder Inländische Produktion). Ihre Firmendaten werden automatisch vorausgefüllt.
 
     <Frame caption="DDS-Assistent Schritt 1 — Aktivitätstyp und Marktteilnehmer">
       <img src="/images/helpcenter/dds-bestellungen/dds-erstellen-schritt1.png" />
@@ -31,7 +31,7 @@ Die Seite **DDS → Eingehend** zeigt zwei Bereiche:
   </Step>
   <Step title="Schritt 2: Lieferant & Artikel">
     Wählen Sie den **Lieferanten** und die spezifischen **Artikel** aus. Geben Sie für jeden Artikel die **Menge in kg** an.
-
+    Menge in diesem Kontext bedeutet die Gesamtmenge die sie von diesem Artikel in diesem Jahr erhalten.
     <Frame caption="DDS-Assistent Schritt 2 — Lieferant und Artikel mit Mengen">
       <img src="/images/helpcenter/dds-bestellungen/dds-erstellen-schritt2.png" />
     </Frame>
@@ -58,7 +58,7 @@ Wenn Sie bereits eine DDS von einem vorgelagerten Lieferanten erhalten haben, k�
 
 ## DDS-Zuweisung zu Bestellungen
 
-Sobald eine DDS den Status **Validiert** oder **Eingereicht** hat, können Sie Bestellungen zuweisen:
+Sobald eine DDS den Status **Entwurf**, **Validiert** oder **Eingereicht** hat, können Sie Bestellungen zuweisen:
 
 1. Klicken Sie bei einer Bestellung ohne DDS auf **"DDS zuweisen"**.
 2. Das System zeigt nur passende DDS an (gleicher Lieferant, passende Artikel, genügend Restvolumen).
@@ -75,9 +75,6 @@ Sobald eine DDS den Status **Validiert** oder **Eingereicht** hat, können Sie B
 | **Entwurf** | DDS wurde erstellt, aber noch nicht eingereicht |
 | **Wird verarbeitet** | DDS wird an TRACES übermittelt |
 | **Eingereicht** | DDS wurde erfolgreich an EU TRACES übermittelt |
-| **Validiert** | DDS wurde von EU TRACES akzeptiert |
-| **Wird geprüft** | DDS befindet sich in der Prüfung durch die Behörde |
-| **Korrektur angefordert** | Die Behörde hat eine Korrektur angefordert |
 | **Abgelehnt** | DDS wurde von TRACES abgelehnt |
 | **Fehlgeschlagen** | Technischer Fehler bei der Einreichung |
 | **Extern** | DDS eines vorgelagerten Lieferanten |
@@ -90,6 +87,15 @@ Unter **Einstellungen → Automatisierungen** können Sie DDS-Prozesse automatis
 - **Automatische DDS-Erstellung** — Bei fehlender passender DDS wird automatisch eine neue erstellt
 - **Standard-DDS-Volumen** — Standardvolumen für automatisch erstellte DDS
 
+<Frame caption="DDS Automatisierungen">
+  <img src="/images/helpcenter/dds-bestellungen/dds-einstellungen.png" />
+</Frame>
+
+<Warning>
+Verkaufsaufträge können nie automatisch DDS zugeordnet werden, da das System ihre interne Chargenrückverfolgung nicht kennt. Die Zuordnung muss immer manuell erfolgen.
+</Warning>
+
+
 ## Volumen-Tracking
 
 Polygon One verfolgt automatisch das **zugewiesene Volumen** im Vergleich zum **Gesamtvolumen der DDS**.
@@ -100,4 +106,5 @@ Das System verhindert die Zuweisung einer Bestellung, wenn diese die verbleibend
 
 <Note>
 Stellen Sie sicher, dass Ihre **EU TRACES Zugangsdaten** (Benutzername + Web Service Access Token) in den Einstellungen hinterlegt sind. Siehe [TRACES-Registrierung](/de/helpcenter/onboarding/traces).
+Sonst ist es nicht möglich DDS an Traces zu übermitteln.
 </Note>
