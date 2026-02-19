@@ -1,73 +1,73 @@
 ---
-title: 'Introduction'
-description: 'Integrate your ERP system with the Polygon One EUDR Compliance Platform'
+title: 'Einführung'
+description: 'Integrieren Sie Ihr ERP-System mit der Polygon One EUDR-Compliance-Plattform'
 ---
 
-## Overview
+## Übersicht
 
-The Polygon One API allows you to programmatically manage your EUDR compliance data. It is designed for server-to-server integration with your ERP system (SAP, Oracle, Microsoft Dynamics, etc.).
+Die Polygon One API ermöglicht Ihnen die programmatische Verwaltung Ihrer EUDR-Compliance-Daten. Sie ist für die Server-zu-Server-Integration mit Ihrem ERP-System (SAP, Oracle, Microsoft Dynamics, etc.) konzipiert.
 
-**What you can do with the API:**
+**Was Sie mit der API tun können:**
 
-- **Articles** — Create, update, and query articles. EUDR relevance is determined automatically from the HS code.
-- **Suppliers** — Manage supplier data and link suppliers to articles.
-- **Orders** — Import purchase and sale orders (single or batch). Orders can be auto-assigned to DDS statements.
-- **DDS Statements** — Create and manage Due Diligence Statements for TRACES submission.
+- **Artikel** — Artikel erstellen, aktualisieren und abfragen. Die EUDR-Relevanz wird automatisch anhand des HS-Codes bestimmt.
+- **Lieferanten** — Lieferantendaten verwalten und Lieferanten mit Artikeln verknüpfen.
+- **Bestellungen** — Einkaufs- und Verkaufsbestellungen importieren (einzeln oder im Stapel). Bestellungen können automatisch DDS-Erklärungen zugewiesen werden.
+- **DDS-Erklärungen** — Sorgfaltspflichterklärungen für die TRACES-Einreichung erstellen und verwalten.
 
-## Authentication
+## Authentifizierung
 
-All API endpoints require a Bearer token. Generate your API key in the Polygon One dashboard:
+Alle API-Endpunkte erfordern einen Bearer-Token. Generieren Sie Ihren API-Schlüssel im Polygon One Dashboard:
 
-1. Navigate to **Settings > API Keys**
-2. Click **Create API Key**
-3. Select the required permission scopes (e.g. `articles:read`, `orders:write`)
-4. Copy the generated key
+1. Navigieren Sie zu **Einstellungen > API-Schlüssel**
+2. Klicken Sie auf **API-Schlüssel erstellen**
+3. Wählen Sie die erforderlichen Berechtigungen (z.B. `articles:read`, `orders:write`)
+4. Kopieren Sie den generierten Schlüssel
 
-Include the key in the `Authorization` header of every request:
+Fügen Sie den Schlüssel im `Authorization`-Header jeder Anfrage hinzu:
 
 ```bash
 Authorization: Bearer eudr_8f7d2a...
 ```
 
 <Warning>
-  API keys are secret credentials for server-to-server communication. Store them in environment variables and **never** expose them in client-side code.
+  API-Schlüssel sind vertrauliche Zugangsdaten für die Server-zu-Server-Kommunikation. Speichern Sie diese in Umgebungsvariablen und geben Sie sie **niemals** in clientseitigem Code preis.
 </Warning>
 
-## Base URL
+## Basis-URL
 
-All API requests should be made to:
+Alle API-Anfragen werden an folgende URL gerichtet:
 
 ```
 https://app.polygonone.com
 ```
 
-## Permission Scopes
+## Berechtigungen
 
-Each API key is assigned specific permission scopes that control access:
+Jedem API-Schlüssel werden spezifische Berechtigungen zugewiesen, die den Zugriff steuern:
 
-| Scope | Description |
+| Berechtigung | Beschreibung |
 | :--- | :--- |
-| `articles:read` | Read articles |
-| `articles:write` | Create, update, delete articles |
-| `suppliers:read` | Read suppliers |
-| `suppliers:write` | Create, update, delete suppliers |
-| `orders:read` | Read orders |
-| `orders:write` | Create, update, delete orders |
-| `dds:read` | Read DDS statements |
-| `dds:write` | Create, update, delete DDS statements |
+| `articles:read` | Artikel lesen |
+| `articles:write` | Artikel erstellen, aktualisieren, löschen |
+| `suppliers:read` | Lieferanten lesen |
+| `suppliers:write` | Lieferanten erstellen, aktualisieren, löschen |
+| `orders:read` | Bestellungen lesen |
+| `orders:write` | Bestellungen erstellen, aktualisieren, löschen |
+| `dds:read` | DDS-Erklärungen lesen |
+| `dds:write` | DDS-Erklärungen erstellen, aktualisieren, löschen |
 
-## Response Format
+## Antwortformat
 
-Successful responses return JSON data directly. List endpoints return arrays, single-resource endpoints return objects.
+Erfolgreiche Antworten liefern JSON-Daten direkt zurück. Listen-Endpunkte geben Arrays zurück, Einzelressourcen-Endpunkte geben Objekte zurück.
 
-**Single resource creation** returns HTTP `201`:
+**Einzelne Ressource erstellen** gibt HTTP `201` zurück:
 ```json
 {
   "article": { "id": "...", "name": "..." }
 }
 ```
 
-**Batch imports** return HTTP `200` with a summary:
+**Stapelimporte** geben HTTP `200` mit einer Zusammenfassung zurück:
 ```json
 {
   "imported": [{ "id": "...", "orderNumber": "ORD-001" }],
@@ -76,21 +76,21 @@ Successful responses return JSON data directly. List endpoints return arrays, si
 }
 ```
 
-## Error Handling
+## Fehlerbehandlung
 
-The API uses standard HTTP status codes:
+Die API verwendet Standard-HTTP-Statuscodes:
 
-| Code | Description |
+| Code | Beschreibung |
 | :--- | :--- |
-| `200` | **OK** — Request successful |
-| `201` | **Created** — Resource created successfully |
-| `400` | **Bad Request** — Invalid input data or validation errors |
-| `401` | **Unauthorized** — Invalid or missing API key |
-| `403` | **Forbidden** — API key lacks required permissions, or account setup is incomplete |
-| `404` | **Not Found** — Resource does not exist or does not belong to your company |
-| `500` | **Internal Server Error** — Something went wrong on our end |
+| `200` | **OK** — Anfrage erfolgreich |
+| `201` | **Erstellt** — Ressource erfolgreich erstellt |
+| `400` | **Ungültige Anfrage** — Ungültige Eingabedaten oder Validierungsfehler |
+| `401` | **Nicht autorisiert** — Ungültiger oder fehlender API-Schlüssel |
+| `403` | **Zugriff verweigert** — API-Schlüssel hat nicht die erforderlichen Berechtigungen, oder Kontoeinrichtung ist unvollständig |
+| `404` | **Nicht gefunden** — Ressource existiert nicht oder gehört nicht zu Ihrem Unternehmen |
+| `500` | **Interner Serverfehler** — Auf unserer Seite ist ein Fehler aufgetreten |
 
-Error responses include an `error` field and optionally `details`:
+Fehlerantworten enthalten ein `error`-Feld und optional `details`:
 
 ```json
 {
