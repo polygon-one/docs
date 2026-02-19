@@ -12,27 +12,99 @@ Die **Kartenansicht** bietet eine globale Übersicht über alle erfassten Produk
   <img src="/images/helpcenter/optional/karte-uebersicht.png" />
 </Frame>
 
-## Funktionen
+## Filter
 
-- **Globale Übersicht** — Alle Produktionsstandorte Ihrer Lieferanten auf einer interaktiven Karte
-- **Flächen-Sidebar** — Liste aller Flächen mit Suchfunktion
-- **Filter** — Nach Status, Rohstoff oder Lieferant filtern
-- **Flächendetails** — Klicken Sie auf eine Fläche für Details:
-  - Flächengröße (in Hektar)
-  - Koordinaten
-  - Zugehörige Artikel
-  - Compliance-Status (Kein Entwaldungsrisiko / Entwaldungsrisiko erkannt / Analyse ausstehend)
-  - Satellitenanalyse-Ergebnisse (ESA, JRC, GFT, TMF, PALSAR)
-  - Risikokennzeichen
+Über die Filterleiste können Sie die angezeigten Flächen eingrenzen:
+
+| Filter | Beschreibung |
+|--------|-------------|
+| **Lieferant** | Flächen eines bestimmten Lieferanten anzeigen |
+| **Artikel** | Flächen für einen bestimmten Artikel anzeigen |
+| **Analysestatus** | Nach Compliance-Status filtern (z.B. nur Flächen mit Risiko) |
+| **Risikokennzeichen** | Nur Flächen mit bestimmten Risikoarten anzeigen (z.B. TMF-Entwaldung, Degradierung) |
+
+## Flächen-Status
+
+Jede Fläche auf der Karte hat einen Analysestatus, der farblich hervorgehoben wird:
+
+| Status | Beschreibung |
+|--------|-------------|
+| **Kein Entwaldungsrisiko** | Satellitenanalyse bestätigt: keine Entwaldung nach dem Stichtag (31.12.2020) |
+| **Entwaldungsrisiko** | Analyse hat potenzielle Entwaldung oder Degradierung erkannt |
+| **Analyse ausstehend** | Fläche wurde eingereicht, Satellitenanalyse läuft noch |
+| **Nicht EUDR-relevant** | Fläche ist einem nicht-EUDR-relevanten Artikel zugeordnet |
+| **Prüfung ausstehend** | Risikominderung wurde eingereicht und wartet auf Überprüfung |
+| **Risiko mitigiert** | Risiko wurde erkannt, aber durch Nachweise erfolgreich behoben |
+
+## Flächendetails (Sidebar)
+
+Klicken Sie auf eine Fläche auf der Karte oder in der Seitenleiste, um den Detailbereich zu öffnen.
+
+<Frame caption="Plot Detailansicht">
+    <img src="/images/helpcenter/optional/plot.png" />
+</Frame>
+
+### Stammdaten
+
+- **Flächenname** — Bezeichnung der Produktionsfläche
+- **Flächengröße** — Größe in Hektar (ha)
+- **GPS-Koordinaten** — Breitengrad und Längengrad (Dezimalgrad)
+- **Land** — Land der Produktionsfläche
+- **Zugehörige Artikel** — Welche Artikel auf dieser Fläche produziert werden
+- **Zugehöriger Lieferant** — Welcher Lieferant diese Fläche gemeldet hat
+
+### Satellitenanalyse-Ergebnisse
+
+Die Detailansicht zeigt die Ergebnisse aller verwendeten Satellitendatenquellen:
+
+| Datenquelle | Analyse | Mögliche Ergebnisse |
+|-------------|---------|---------------------|
+| **ESA WorldCover** | Landbedeckungsklassifizierung | Ackerland, Stadtgebiet, Wasser, Baumbedeckung, Buschland, Grasland |
+| **JRC Globale Waldbedeckung** | Waldtyp-Erkennung | Primärwald, Naturwald, Plantagenwald |
+| **PALSAR Radar** | Radarbasierte Waldveränderungserkennung | Niedriges / Mittleres / Hohes Risiko |
+| **TMF (Tropischer Feuchtwald)** | Tropische Waldüberwachung | Ungestört, Degradiert, Plantage, Nachwuchs, Entwaldet |
+
+### Zusätzliche Prüfungen
+
+- **Agroforstwirtschafts-Erkennung** — Identifiziert gemischte landwirtschaftlich-forstwirtschaftliche Nutzungsmuster
+- **Plausibilitätsprüfungen** — Erkennt Überlappungen mit Stadtgebieten, Gewässern und anderen Anomalien
+
+### Risikokennzeichen
+
+Falls Risiken erkannt wurden, werden diese in der Detailansicht als einzelne Kennzeichen aufgelistet. Für jedes offene Risikokennzeichen steht die Aktion **"Mitigieren"** zur Verfügung — siehe [Risiko-Behebung](/de/helpcenter/datensammlung/risiko-behebung) für Details zum Mitigierungsprozess.
 
 ## Aktionen auf der Karte
 
-- **Fläche zeichnen** — Neue Produktionsflächen direkt auf der Karte einzeichnen
-- **GeoJSON hochladen** — Geodaten als Datei importieren
-- **Fläche löschen** — Bestehende Flächen entfernen
-- **Grenzen bearbeiten** — Flächengrenzen durch Ziehen der Eckpunkte anpassen
-- **Adresssuche** — Nach einer Adresse suchen und auf der Karte navigieren
+### Fläche zeichnen
+
+<Steps>
+  <Step title="Zeichenmodus aktivieren">
+    Klicken Sie auf das **Zeichenwerkzeug** in der Kartenleiste.
+  </Step>
+  <Step title="Fläche einzeichnen">
+    Setzen Sie Punkte auf der Karte, um die Grenzen der Produktionsfläche zu definieren. Klicken Sie auf den Startpunkt, um das Polygon zu schließen.
+  </Step>
+  <Step title="Metadaten eingeben">
+    Geben Sie den Flächennamen, die Rohstoffgruppe und das Produktionsland ein.
+  </Step>
+  <Step title="Speichern">
+    Nach dem Speichern wird automatisch die Satellitenanalyse für die neue Fläche gestartet.
+  </Step>
+</Steps>
+
+### GeoJSON hochladen
+
+Importieren Sie vorbereitete Geodaten als `.geojson`-Datei:
+- Unterstützte Geometrietypen: **Polygon** und **MultiPolygon**
+- Unterstützte GeoJSON-Typen: **Feature** und **FeatureCollection**
+- Eigenschaften (Properties) aus der Datei werden automatisch als Flächen-Metadaten übernommen
+
+### Weitere Aktionen
+
+- **Grenzen bearbeiten** — Ziehen Sie die Eckpunkte einer bestehenden Fläche, um deren Grenzen anzupassen
+- **Fläche löschen** — Entfernen Sie eine Fläche über das Kontextmenü (mit Bestätigungsdialog)
+- **Adresssuche** — Suchen Sie nach einer Adresse oder einem Ort, um schnell zur richtigen Position auf der Karte zu navigieren
 
 <Tip>
-Nutzen Sie die Kartenansicht für einen schnellen visuellen Überblick über die Verteilung Ihrer Lieferkette und die Identifizierung von Risikogebieten.
+Nutzen Sie die Kartenansicht für einen schnellen visuellen Überblick über die Verteilung Ihrer Lieferkette und die Identifizierung von Risikogebieten. Kombinieren Sie den Filter **Risikokennzeichen** mit der Kartenansicht, um betroffene Gebiete geografisch einzuordnen.
 </Tip>

@@ -15,19 +15,94 @@ Im Bereich **Dokumente** finden Sie eine zentrale Übersicht über alle hochgela
 ## Funktionen
 
 - **Zentrale Dokumentenübersicht** — Alle Nachweisdokumente an einem Ort einsehen
-- **Filterfunktion** — Dokumente nach Artikel, Lieferant oder Status filtern
+- **Suche & Filter** — Dokumente nach Artikel, Lieferant oder Status filtern
 - **Validierungsstatus** — Sofort erkennen, welche Dokumente verifiziert, abgelehnt oder abgelaufen sind
-- **Neues Dokument hochladen** — Direkt aus der Dokumentenübersicht Nachweise hochladen
+- **Detailansicht** — KI-Analyseergebnisse, Originaldokument und Metadaten einsehen
 
-### Dokument-Status
+## Dokument-Status
 
 | Status | Beschreibung |
 |--------|-------------|
-| **Verifiziert** | Dokument wurde geprüft und akzeptiert |
+| **Verifiziert** | Dokument wurde manuell geprüft und akzeptiert |
+| **Auto-Verifiziert** | KI-Analyse hat das Dokument automatisch als validen Nachweis bestätigt |
+| **Ausstehend** | Dokument wurde eingereicht und wird noch geprüft |
 | **Abgelehnt** | Dokument wurde abgelehnt — erneute Einreichung nötig |
-| **Abgelaufen** | Gültigkeitsdatum überschritten |
-| **Ausstehend** | Dokument wird noch geprüft |
+| **Abgelaufen** | Gültigkeitsdatum des Dokuments ist überschritten |
+| **Ungültig** | Dokument konnte nicht verarbeitet werden oder ist nicht relevant |
+
+## Dokumenten-Detailansicht
+
+Klicken Sie auf ein Dokument in der Übersicht, um den Detaildialog zu öffnen.
+
+<Frame caption="Dokumentenübersicht mit Statusfilter">
+  <img src="/images/helpcenter/optional/dokumente-detail.png" />
+</Frame>
+
+Die Detailansicht enthält:
+
+### Metadaten
+
+- **Dokumentname** und Dateityp
+- **Hochgeladen von** — Name des Benutzers oder Lieferanten, der das Dokument eingereicht hat
+- **Hochgeladen am** — Datum des Uploads
+- **Zertifizierungsschema** — Falls angegeben (z.B. FSC, PEFC, RSPO, Rainforest Alliance)
+- **Zugeordnete Artikel** — Welche Artikel durch dieses Dokument abgedeckt werden
+- **Notizen** — Vom Uploader hinzugefügte Kontextinformationen
+
+### KI-Analyseergebnis
+
+Nach dem Upload wird jedes Dokument automatisch durch die KI analysiert. Der Detaildialog zeigt das vollständige Analyseergebnis:
+
+| Feld | Beschreibung |
+|------|-------------|
+| **Dokumenttyp** | Automatisch erkannter Typ (z.B. Zertifikat, Genehmigung, Inspektionsbericht) |
+| **Zugeordnete Compliance-Kategorien** | Welche rechtlichen Kategorien das Dokument abdeckt (z.B. Landnutzungsrechte, Umweltschutz) |
+| **Konfidenz-Score** | Vertrauensstufe der KI-Klassifizierung |
+| **Validierungen** | Positiv erkannte Inhalte und bestätigte Angaben |
+| **Warnungen** | Potenzielle Probleme, die Aufmerksamkeit erfordern |
+| **Kritische Hinweise** | Schwerwiegende Mängel, die eine Ablehnung verursachen können |
+| **Empfehlung** | KI-Empfehlung: Akzeptieren oder Ablehnen |
 
 <Info>
-Dokumente werden primär über den [Evidence Upload](/de/helpcenter/datensammlung/evidence-upload) oder das [Supplier Portal](/de/helpcenter/lieferantenansicht) hochgeladen. Die Dokumentenübersicht dient der zentralen Verwaltung und Einsicht — besonders hilfreich, um abgelehnte Dokumente schnell zu identifizieren.
+Bei hoher Konfidenz und keinen Warnungen wird das Dokument automatisch als **Auto-Verifiziert** akzeptiert. Bei niedriger Konfidenz oder kritischen Hinweisen wechselt der Status zu **Ausstehend** und erfordert eine manuelle Überprüfung.
+</Info>
+
+### Originaldokument herunterladen
+
+Über die Schaltfläche **"Herunterladen"** im Detaildialog können Sie das Originaldokument jederzeit als PDF herunterladen.
+
+## Überprüfungsprozess
+
+Der Überprüfungsprozess für Dokumente läuft in drei Phasen ab:
+
+<Steps>
+  <Step title="Upload & automatische Analyse">
+    Nach dem Hochladen wird das Dokument automatisch durch die KI analysiert. Die KI klassifiziert den Dokumenttyp, ordnet ihn den relevanten Compliance-Kategorien zu und vergibt einen Konfidenz-Score.
+  </Step>
+  <Step title="Automatische oder manuelle Entscheidung">
+    - **Hohe Konfidenz, keine kritischen Hinweise** → Das Dokument wird automatisch als **Auto-Verifiziert** akzeptiert.
+    - **Niedrige Konfidenz oder Warnungen** → Der Status wechselt zu **Ausstehend**. Sie erhalten eine Benachrichtigung und müssen das Dokument manuell prüfen.
+  </Step>
+  <Step title="Manuelle Überprüfung (falls erforderlich)">
+    Bei ausstehenden Dokumenten können Sie im Detaildialog:
+    - Das Originaldokument herunterladen und prüfen
+    - Die KI-Analyseergebnisse und Empfehlung einsehen
+    - Das Dokument als **Verifiziert** akzeptieren oder als **Abgelehnt** markieren
+  </Step>
+</Steps>
+
+<Frame caption="Manuelle Dokumentenprüfung">
+  <img src="/images/helpcenter/optional/dokumente-manuell.png" />
+</Frame>
+
+<Warning>
+Bei abgelehnten Dokumenten muss ein neues Dokument eingereicht werden. Nutzen Sie die Nachrichtenfunktion, um den Lieferanten über die Ablehnung und die benötigten Korrekturen zu informieren.
+</Warning>
+
+<Note>
+Alle Dokumente werden gemäß EUDR-Anforderungen mindestens **5 Jahre** aufbewahrt.
+</Note>
+
+<Info>
+Dokumente werden primär über den [Evidence Upload](/de/helpcenter/datensammlung/evidence-upload) oder das [Supplier Portal](/de/helpcenter/lieferantenansicht) hochgeladen. Die Dokumentenübersicht dient der zentralen Verwaltung und Einsicht — besonders hilfreich, um abgelehnte oder ausstehende Dokumente schnell zu identifizieren.
 </Info>
