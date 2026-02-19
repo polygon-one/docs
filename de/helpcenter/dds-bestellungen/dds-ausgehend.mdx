@@ -6,11 +6,11 @@ icon: "arrow-up-from-line"
 
 ## Übersicht
 
-Die Seite **DDS → Ausgehend** verwaltet Sorgfaltserklärungen für ausgehende Waren. Dies betrifft vor allem **inländische Produktion** (Domestic Production) innerhalb der EU.
+Die Seite **DDS → Ausgehend** verwaltet Sorgfaltspflichterklärungen für ausgehende Waren. Dies betrifft vor allem **inländische Produktion** (Domestic Production) innerhalb der EU und die Weiterreichung von **externen DDS**.
 
 Die Seite zeigt zwei Bereiche:
 1. **Aufträge ohne DDS-Referenz** — Verkaufsaufträge, die noch keiner DDS zugewiesen sind
-2. **Inländische Produktions-Sorgfaltserklärungen** — Übersicht der erstellten DDS für Eigenproduktion
+2. **Inländische Produktions-Sorgfaltspflichterklärungen** — Übersicht der erstellten DDS für Eigenproduktion
 
 <Frame caption="DDS Ausgehend — Übersicht">
   <img src="/images/helpcenter/dds-bestellungen/dds-ausgehend-uebersicht.png" />
@@ -26,7 +26,7 @@ Bei **inländischer Produktion** sind Sie selbst der Erzeuger. Verkaufsaufträge
 
 <Steps>
   <Step title="DDS erstellen">
-    Erstellen Sie eine neue DDS und wählen Sie **Inländische Produktion** als Aktivitätstyp.
+    Erstellen Sie eine neue DDS indem sie auf **Erstellen** klicken. Der Aktivitätstyp ist dann automatisch **Inländische Produktion**
   </Step>
   <Step title="Artikel & Mengen angeben">
     Wählen Sie Ihre Verkaufsartikel aus und geben Sie die produzierten Mengen in kg an.
@@ -44,11 +44,14 @@ Bei **inländischer Produktion** sind Sie selbst der Erzeuger. Verkaufsaufträge
 
 ## EU-Produktionsinformationen
 
-Für Verkaufsartikel mit Eigenproduktion können Sie über das **Ausgehend-Dashboard** direkt die Produktionsinformationen hinterlegen:
+Für Verkaufsartikel mit Eigenproduktion können Sie über das **Ausgehend Dashboard** direkt die Produktionsinformationen hinterlegen:
 
 <Steps>
+    <Step title="Ich produziere dies">
+        Wählen Sie **Ich produziere dies**
+      </Step>
   <Step title="Produktionsland angeben">
-    Wählen Sie das Land der Produktion.
+    Wählen Sie das Land der Produktion. Dieses ist vorausgewählt das Land des Firmensitz ihrer Firma.
   </Step>
   <Step title="Geodaten bereitstellen">
     Zeichnen Sie die Produktionsfläche auf der Karte ein oder laden Sie eine GeoJSON-Datei hoch.
@@ -64,11 +67,11 @@ Für Verkaufsartikel mit Eigenproduktion können Sie über das **Ausgehend-Dashb
 
 ## Eingangsartikel verknüpfen (BOM-Linking)
 
-Für Verkaufsartikel, die aus eingekauften Materialien hergestellt werden, können Sie die **Stückliste (Bill of Materials)** verknüpfen:
+Für Verkaufsartikel, die aus eingekauften Materialien hergestellt werden oder direkt weiterverkauft werden, können Sie die **Stückliste (Bill of Materials)** verknüpfen:
 
-1. Klicken Sie bei einem Verkaufsartikel auf **"Eingangsartikel verknüpfen"**.
+1. Klicken Sie bei einem Verkaufsartikel auf **"Eingänge verknüpfen"**.
 2. Wählen Sie die Einkaufsartikel aus, die als Input verwendet werden.
-3. Die Compliance-Nachweise der Eingangsartikel werden automatisch auf den Verkaufsartikel übertragen.
+3. Alle DDS die sie für die Eingangsartikel erstellen oder alle externen DDS dies sie mit dem Eingangsartikel verknüpfen werden automatisch auf den Verkaufsartikel übertragen.
 
 <Frame caption="BOM-Linking — Eingangsartikel mit Verkaufsartikel verknüpfen">
   <img src="/images/helpcenter/dds-bestellungen/dds-ausgehend-bom.png" />

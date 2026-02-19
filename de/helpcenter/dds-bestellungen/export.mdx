@@ -6,7 +6,7 @@ icon: "download"
 
 ## Übersicht
 
-Exportieren Sie Ihre Bestellungen und DDS-Daten für die Zollabfertigung, interne Dokumentation oder die Weitergabe an Behörden.
+Exportieren Sie Ihre Bestellungen mit Verknüpfung zu Ihren DDS für die Zollabfertigung, interne Dokumentation oder die Weitergabe an Behörden.
 
 ## Bestellungen exportieren
 
@@ -22,17 +22,17 @@ Exportieren Sie Ihre Bestellungen und DDS-Daten für die Zollabfertigung, intern
     </Frame>
   </Step>
   <Step title="Export starten">
-    Klicken Sie auf **"Exportieren"**, um die ausgewählten Bestellungen herunterzuladen.
+    Klicken Sie auf **"Exportieren"**, um die ausgewählten Bestellungen als CSV Datei herunterzuladen.
   </Step>
 </Steps>
 
 ## DDS Statements exportieren
 
-Von der DDS-Detailansicht können Sie einzelne Sorgfaltserklärungen exportieren:
+Von der DDS-Detailansicht können Sie einzelne oder alle Sorgfaltspflichterklärungen exportieren:
 
 <Steps>
   <Step title="DDS-Detailansicht öffnen">
-    Klicken Sie in der DDS-Übersicht auf **"Details anzeigen"** bei der gewünschten DDS.
+    Klicken Sie in der DDS-Übersicht auf **"Details anzeigen"** bei der gewünschten DDS oder clicken sie auf die blau hinterlegte DDS Referenznummer.
   </Step>
   <Step title="PDF herunterladen">
     Klicken Sie auf **"PDF herunterladen"** für eine druckbare Version der DDS.
@@ -42,27 +42,63 @@ Von der DDS-Detailansicht können Sie einzelne Sorgfaltserklärungen exportieren
     </Frame>
   </Step>
   <Step title="Oder: Exportieren">
-    Klicken Sie auf **"Exportieren"** für einen Datenexport.
+    Alternativ klicken Sie auf **"Exportieren"** neben der DDS Tabelle für einen Datenexport aller DDS.
   </Step>
+  <Frame caption="DDS Export alle">
+        <img src="/images/helpcenter/dds-bestellungen/export-all-dds.png" />
+      </Frame>
 </Steps>
 
 ## Exportierte Daten
 
-Die exportierten DDS-Daten enthalten unter anderem:
+Die exportierte CSV-Datei enthält eine Zeile pro DDS mit folgenden Spalten:
 
-| Feld | Beschreibung |
-|------|-------------|
-| **Referenznummer** | Offizielle DDS-Referenznummer von EU TRACES |
-| **Verifizierungsnummer** | Prüfnummer für die Zollabfertigung |
-| **Typ** | Import, Export, Handel oder Inländische Produktion |
-| **Lieferant** | Zugeordneter Lieferant und Land |
-| **Artikel & Mengen** | Enthaltene Artikel mit Volumen (kg) |
-| **Status** | Aktueller DDS-Status |
-| **Zugewiesene Bestellungen** | Bestellungen, die dieser DDS zugeordnet sind |
-| **Flächen & Geolokalisierung** | Flächendaten mit Koordinaten und Größe |
+### DDS-Stammdaten
+
+| Spalte | Beschreibung | Beispiel |
+|--------|-------------|----------|
+| **DDS-ID** | Systeminterne eindeutige ID (UUID) | `d8114bbf-134c-4609-96be-b545b6882f36` |
+| **Referenznummer** | Offizielle DDS-Referenznummer von EU TRACES | `24HUTZAZT3F266` |
+| **Verifizierungsnummer** | Prüfnummer für die Zollabfertigung | `6542` |
+| **Status** | Aktueller DDS-Status (z.B. `submitted`, `validated`, `draft`, `external`) | `submitted` |
+| **Typ** | Aktivitätstyp (`import`, `export`, `trade`, `domestic_production`) | `import` |
+| **Land** | Land des Betreibers | `Germany` |
+| **Eingereicht am** | Datum der Einreichung bei TRACES (ISO-Format) | `2026-02-19` |
+
+### Lieferant & Artikel
+
+| Spalte | Beschreibung | Beispiel |
+|--------|-------------|----------|
+| **Lieferant** | Name des zugeordneten Lieferanten | `Brazil Supplier 001` |
+| **Lieferantenland** | Herkunftsland des Lieferanten | `Brazil` |
+| **Artikel** | Artikelname/-bezeichnung | `Soja (Bio) / Soybean Organic` |
+| **HS-Code** | Harmonisierter Zolltarifcode | `1201.90` |
+
+### Volumen
+
+| Spalte | Beschreibung | Beispiel |
+|--------|-------------|----------|
+| **Volumen (kg)** | Gesamtvolumen der DDS in Kilogramm | `1000` |
+| **Zugewiesenes Volumen (kg)** | Bereits durch Bestellungen zugewiesenes Volumen | `0` |
+| **Verbleibendes Volumen (kg)** | Noch verfügbares Volumen für weitere Bestellungen | `1000` |
+
+### Flächendaten & Geolokalisierung
+
+| Spalte | Beschreibung | Beispiel |
+|--------|-------------|----------|
+| **Flächenname** | Name der Produktionsfläche | `PLT-BR-001-A` |
+| **Flächenland** | Land der Produktionsfläche | `Brazil` |
+| **Breitengrad** | GPS-Breitengrad (Dezimalgrad) | `-4.934206` |
+| **Längengrad** | GPS-Längengrad (Dezimalgrad) | `-58.897204` |
+| **Flächengröße (ha)** | Größe der Fläche in Hektar | `412.76` |
+| **Flächen-GeoJSON** | Vollständige Geometrie der Fläche im GeoJSON-Format | `{"type":"Feature","geometry":{...}}` |
 
 <Info>
-Von der DDS-Detailansicht können Sie auch direkt den Status **in TRACES verifizieren** über den Link "In TRACES verifizieren".
+Bei DDS mit dem Status **`external`** (außerhalb von Polygon One erstellt) können Felder wie Land, Eingereicht am, Lieferantenland und Flächendaten leer sein — es werden nur die Referenznummer und Verifizierungsnummer erfasst.
+</Info>
+
+<Info>
+Von der DDS-Detailansicht können Sie auch direkt den Status **in TRACES verifizieren** über den Link "In TRACES verifizieren" oder ein sich im Entwurf befindeten DDS in Traces einreichen.
 </Info>
 
 <Note>
