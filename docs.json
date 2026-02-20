@@ -162,7 +162,7 @@
     "primary": {
       "type": "button",
       "label": "App",
-      "href": "https://polygon1-click-dummy.vercel.app/"
+      "href": "https://app.polygon-one.com/"
     }
   },
   "contextual": {
