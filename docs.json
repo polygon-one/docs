@@ -8,6 +8,9 @@
     "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
+  "search": {
+    "prompt": "Suche..."
+  },
   "languages": [
     {
       "language": "de",
@@ -26,30 +29,38 @@
             ]
           },
           {
-            "group": "Onboarding",
+            "group": "Ersteinrichtung",
             "pages": [
               "de/helpcenter/onboarding/firmenaccount",
               "de/helpcenter/onboarding/traces"
             ]
           },
           {
-            "group": "Stammdaten",
+            "group": "Stammdaten erheben",
             "pages": [
+              "de/helpcenter/datenhaltung/uebersicht",
               "de/helpcenter/datenhaltung/lieferanten",
               "de/helpcenter/datenhaltung/artikel"
             ]
           },
           {
-            "group": "EUDR Analyse",
+            "group": "EUDR Betroffenheitscheck",
             "pages": [
               "de/helpcenter/eudr-analyse"
             ]
           },
           {
-            "group": "Datensammlung",
+            "group": "Datensammlung Artikel 9",
             "pages": [
+              "de/helpcenter/datensammlung/uebersicht-art9",
               "de/helpcenter/datensammlung/evidence-upload",
-              "de/helpcenter/datensammlung/supplier-onboarding",
+              "de/helpcenter/datensammlung/supplier-onboarding"
+            ]
+          },
+          {
+            "group": "Risikoanalyse Artikel 10",
+            "pages": [
+              "de/helpcenter/datensammlung/uebersicht-art10",
               "de/helpcenter/datensammlung/risiko-behebung",
               "de/helpcenter/datensammlung/berichte"
             ]
@@ -57,6 +68,7 @@
           {
             "group": "DDS & Bestellungen",
             "pages": [
+              "de/helpcenter/dds-bestellungen/uebersicht",
               "de/helpcenter/dds-bestellungen/import-erstellung",
               "de/helpcenter/dds-bestellungen/dds-eingehend",
               "de/helpcenter/dds-bestellungen/dds-ausgehend",
