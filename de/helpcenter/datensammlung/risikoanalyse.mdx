@@ -1,0 +1,124 @@
+---
+title: "Risikoanalyse"
+description: "Wie Polygon One Entwaldungs- und Rechtsrisiken automatisch erkennt"
+icon: "magnifying-glass-chart"
+---
+
+## Übersicht
+
+Nachdem Geodaten und rechtliche Informationen eingegangen sind, führt Polygon One automatisch eine umfassende Risikoanalyse durch. Das System unterscheidet zwischen **geografischen Risiken** (Entwaldung und Walddegradation) und **rechtlichen Risiken** (Verstöße gegen landesspezifische Gesetze). Beide Dimensionen müssen erfüllt sein, damit ein Artikel als **konform** gilt.
+
+## Geografische Risikoanalyse
+
+Polygon One analysiert die übermittelten Produktionsflächen mithilfe mehrerer Satellitendatenquellen. Ziel ist es festzustellen, ob nach dem Stichtag **31. Dezember 2020** Entwaldung oder Walddegradation auf den Flächen stattgefunden hat.
+
+### Verwendete Satellitendatenquellen
+
+| Datenquelle | Was wird analysiert |
+|-------------|-------------------|
+| **ESA WorldCover** | Landbedeckungsklassifizierung (Ackerland, Wald, Wasser, Siedlung, Grasland) |
+| **JRC Globale Waldbedeckung** | Waldtyp-Erkennung (Primärwald, Naturwald, Plantagenwald) |
+| **GFT Waldtyp** | Degradationsanalyse — unterscheidet zwischen Primärwald, Naturwald und Plantagenwald |
+| **TMF Tropischer Feuchtwald** | Erkennung von Entwaldung und Degradation in tropischen Feuchtwäldern |
+| **PALSAR Radar** | Unabhängige Waldbestätigung mittels Radar (niedrig/mittel/hohes Risiko) |
+
+Zusätzlich werden **Plausibilitätsprüfungen** durchgeführt — z.B. ob die Fläche mit städtischen Gebieten oder Gewässern überlappt.
+
+### Mögliche Geo-Risikokennzeichen
+
+Nach der Analyse werden Produktionsflächen mit Risikokennzeichen versehen:
+
+| Risikokennzeichen | Beschreibung |
+|-------------------|-------------|
+| **Wald erkannt** | JRC erkennt Waldbedeckung auf der Fläche |
+| **Degradierung von Primärwald** | GFT erkennt Primärwald — Ernte birgt Degradationsrisiko |
+| **Degradierung von Naturwald** | GFT erkennt natürlich regenerierenden Wald |
+| **TMF-Entwaldung erkannt** | TMF erkennt Entwaldungsaktivität nach dem Stichtag |
+| **TMF-Degradierung erkannt** | TMF erkennt degradierte Fläche |
+| **Agroforstwirtschaft mehrdeutig** | Agroforstwirtschaft neben signifikanter Waldbedeckung |
+
+<Frame caption="Flächendetails mit Risikokennzeichen und Satellitenanalyse">
+  <img src="/images/helpcenter/datensammlung/risiko-geo-indikatoren.png" />
+</Frame>
+
+### Flächenstatus nach Analyse
+
+| Status | Bedeutung |
+|--------|----------|
+| **Kein Entwaldungsrisiko** | Satellitenanalyse bestätigt: keine Entwaldung nach dem Stichtag |
+| **Entwaldungsrisiko** | Analyse hat potenzielle Entwaldung oder Degradation erkannt |
+| **Analyse ausstehend** | Fläche wurde übermittelt, Satellitenanalyse läuft noch |
+| **Ausstehende Prüfung** | Risikominderung eingereicht, wartet auf Prüfung |
+| **Risiko mitigiert** | Risiko wurde erkannt, aber durch Nachweise erfolgreich behoben |
+
+## Rechtliche Risikoanalyse
+
+Neben der geografischen Analyse prüft das System die rechtliche Compliance basierend auf dem Fragebogen und den eingereichten Dokumenten. Risiken werden pro **Risikokategorie** des jeweiligen Produktionslandes identifiziert.
+
+### Rechtliche Risikokategorien
+
+| Kategorie | Beispiele für relevante Nachweise |
+|-----------|----------------------------------|
+| **Landnutzungsrechte & Eigentum** | Landbesitzurkunden, Pachtverträge, Nutzungsgenehmigungen |
+| **Umwelt- & Naturschutzgesetze** | Umweltgenehmigungen, Umweltverträglichkeitsprüfungen |
+| **Forstrecht & Holznutzung** | Forstwirtschaftspläne, Einschlagsgenehmigungen (nur bei Holzprodukten) |
+| **Rechte Dritter & indigener Gemeinschaften** | Konsultationsnachweise, Einverständniserklärungen |
+| **Arbeits- & Menschenrechte** | Arbeitsinspektionsberichte, Sozialaudits |
+| **Steuer-, Handels- & Zollvorschriften** | Steuerbescheinigungen, Exportgenehmigungen |
+| **Anti-Korruption & Dokumentenauthentizität** | Compliance-Erklärungen, Audit-Berichte |
+| **Weitere Compliance-Maßnahmen** | Zusätzliche regulatorische Nachweise |
+
+<Frame caption="Rechtliche Risikokategorien mit Status">
+  <img src="/images/helpcenter/datensammlung/risiko-legal-kategorien.png" />
+</Frame>
+
+<Tip>
+Anerkannte **Nachhaltigkeitszertifizierungen** (FSC, PEFC, SFI, ISCC, Rainforest Alliance, RSPO, Fairtrade, RTRS, EU Organic) können automatisch mehrere rechtliche Kategorien abdecken. Für **Holzprodukte aus FLEGT-VPA-Ländern** erfüllt eine gültige FLEGT-Lizenz alle rechtlichen Kategorien auf einmal.
+</Tip>
+
+## Compliance-Dashboard
+
+Sobald die Analyse abgeschlossen ist, zeigt das **Compliance-Dashboard** (Eingehend) eine vollständige Übersicht:
+
+<Frame caption="Compliance-Dashboard mit Übersichtskennzahlen">
+  <img src="/images/helpcenter/eudr-analyse/eudr-analyse-dashboard.png" />
+</Frame>
+
+- **EUDR-relevante Lieferanten** — Anzahl der betroffenen Lieferanten
+- **Analysierte Fläche** — Gesamtfläche in Hektar
+- **Konforme Artikel** — Anzahl der konformen EUDR-relevanten Artikel
+- **Ausstehende Aktionen** — Artikel mit fehlenden Geo-Daten, fehlender rechtlicher Analyse oder fehlendem Bericht
+
+## Compliance-Status pro Artikel
+
+Im **Compliance-Dashboard** (Eingehend) sehen Sie den Gesamtstatus für jeden Artikel:
+
+| Status | Bedeutung |
+|--------|----------|
+| **Konform** | Geo- und rechtliche Compliance erfüllt — bereit für DDS |
+| **Nicht konform** | Entwaldungsrisiko oder rechtliche Mängel erkannt — Risikobehebung erforderlich |
+| **Prüfung ausstehend** | Daten wurden eingereicht, Analyse läuft |
+| **Unbekannt** | Fehlende Daten oder Dokumentation — weitere Informationen erforderlich |
+| **Nicht EUDR-relevant** | Artikel fällt nicht unter die EUDR |
+
+<Frame caption="Compliance-Details für einen Artikel">
+  <img src="/images/helpcenter/eudr-analyse/compliance-details.png" />
+</Frame>
+
+Ein Artikel ist erst dann **konform**, wenn:
+1. Alle Produktionsflächen die geografische Analyse bestehen (oder Risiken mitigiert sind)
+2. Alle rechtlichen Compliance-Kategorien erfüllt sind
+3. Die gesamte Lieferkette bewertet wurde
+
+## Nächste Schritte
+
+Wenn Risiken erkannt wurden, müssen diese behoben werden, bevor eine DDS erstellt werden kann:
+
+<CardGroup cols={2}>
+  <Card title="Risikobehebung" icon="shield-check" href="/de/helpcenter/datensammlung/risiko-behebung">
+    Erkannte Risiken mit dem Mitigierungsdialog beheben.
+  </Card>
+  <Card title="Berichte" icon="file-lines" href="/de/helpcenter/datensammlung/berichte">
+    Compliance-Berichte generieren und herunterladen.
+  </Card>
+</CardGroup>

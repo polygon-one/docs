@@ -50,7 +50,7 @@
             ]
           },
           {
-            "group": "Datensammlung Artikel 9",
+            "group": "Datensammlung (Art. 9 EUDR)",
             "pages": [
               "de/helpcenter/datensammlung/uebersicht-art9",
               "de/helpcenter/datensammlung/evidence-upload",
@@ -58,15 +58,16 @@
             ]
           },
           {
-            "group": "Risikoanalyse Artikel 10",
+            "group": "Risikoanalyse (Art. 10 EUDR)",
             "pages": [
               "de/helpcenter/datensammlung/uebersicht-art10",
+              "de/helpcenter/datensammlung/risikoanalyse",
               "de/helpcenter/datensammlung/risiko-behebung",
               "de/helpcenter/datensammlung/berichte"
             ]
           },
           {
-            "group": "DDS & Bestellungen",
+            "group": "DDS & Bestellungen (Art. 3 EUDR)",
             "pages": [
               "de/helpcenter/dds-bestellungen/uebersicht",
               "de/helpcenter/dds-bestellungen/import-erstellung",

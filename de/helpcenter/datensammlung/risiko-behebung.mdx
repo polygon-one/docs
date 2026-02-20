@@ -1,147 +1,102 @@
 ---
-title: "Risiko-Behebung"
-description: "Entwaldungs- und Rechtsrisiken identifizieren und beheben"
+title: "Risikobehebung"
+description: "Erkannte Risiken über den Mitigierungsdialog beheben"
 icon: "shield-check"
 ---
 
 ## Übersicht
 
-Nach der automatischen Analyse können bei Ihren Artikeln verschiedene Risiken identifiziert werden. Polygon One unterscheidet zwischen **Geo-Risiken** (Entwaldung/Wald Degradation) und **rechtlichen Risiken**. Beide müssen behoben werden, bevor ein Artikel als compliant gilt.
+Wenn die Risikoanalyse bei einem Artikel **Geo-Risiken** (Entwaldung, Degradation) oder **rechtliche Risiken** erkennt, müssen diese behoben werden. Dafür steht Ihnen der **Mitigierungsdialog** zur Verfügung — ein zentrales Werkzeug, mit dem Sie Nachweise einreichen, bestehende Zertifikate verknüpfen oder Dokumente direkt vom Lieferanten anfordern können.
 
-## Geo-Risiken (Entwaldung & Degradation)
+## Der Mitigierungsdialog
 
-Polygon One analysiert die übermittelten Geodaten mithilfe mehrerer Satellitendatenquellen:
+Klicken Sie bei einem offenen Risikokennzeichen (Geo oder Rechtlich) auf **"Mitigieren"**. Es öffnet sich der Mitigierungsdialog mit drei Optionen:
 
-- **ESA WorldCover** — Landbedeckungsklassifizierung
-- **JRC Globale Waldbedeckung** — Walderkennung
-- **GFT Waldtyp** — Degradationsanalyse (Primärwald, Naturwald, Plantagenwald)
-- **TMF Tropischer Feuchtwald** — Entwaldungs- und Degradationserkennung
-- **PALSAR Radar** — Unabhängige Waldbestätigung
-
-### Mögliche Risikokennzeichen
-
-| Risiko | Beschreibung |
-|--------|-------------|
-| **Wald erkannt** | JRC erkennt Waldbedeckung auf der Fläche |
-| **Degradierung von Primärwald** | GFT erkennt Primärwald — Ernte birgt Degradationsrisiko |
-| **Degradierung von Naturwald** | GFT erkennt natürlich regenerierenden Wald |
-| **TMF-Entwaldung erkannt** | TMF erkennt Entwaldungsaktivität |
-| **TMF-Degradierung erkannt** | TMF erkennt degradierte Fläche |
-| **Agroforstwirtschaft mehrdeutig** | Agroforstwirtschaft neben signifikanter Waldbedeckung |
-
-### Geo-Risiken mitigieren
-
-<Steps>
-  <Step title="Risikokennzeichen prüfen">
-    Öffnen Sie die Flächendetails im Dashboard und prüfen Sie die markierten Risikokennzeichen mit den Satellitenanalyse-Ergebnissen.
-
-    <Frame caption="Flächendetails mit Risikokennzeichen und Satellitenanalyse">
-      <img src="/images/helpcenter/datensammlung/risiko-geo-indikatoren.png" />
-    </Frame>
-  </Step>
-  <Step title="Mitigieren klicken">
-    Klicken Sie bei einem offenen Risikokennzeichen auf **"Mitigieren"**.
-  </Step>
-  <Step title="Mitigierungsdialog — Nachweis bereitstellen">
-    Im Mitigierungsdialog stehen Ihnen drei Optionen zur Verfügung:
-
-    **Option 1: Dokument hochladen**
-    - Laden Sie einen Nachweis direkt hoch (z.B. Waldbewirtschaftungsplan, behördliche Genehmigung, Zertifizierung).
-    - Unterstützte Formate: PDF, PNG, JPEG, TIFF, CSV, GeoJSON oder Textdateien (max. 50 MB).
-    - Optional können Sie ein Zertifizierungsschema auswählen (z.B. FSC, PEFC, RSPO), damit das System den Nachweis automatisch den passenden Compliance-Kategorien zuordnet.
-    - Fügen Sie eine **Notiz** hinzu, um den Kontext des Dokuments zu erläutern.
-
-    **Option 2: Bestehendes Zertifikat verknüpfen**
-    - Wählen Sie ein bereits hochgeladenes und verifiziertes Zertifikat aus Ihrer Dokumentenbibliothek.
-    - Das System prüft automatisch, welche Risikokennzeichen durch das Zertifikat abgedeckt werden.
-
-    **Option 3: Vom Lieferanten anfordern**
-    - Senden Sie eine E-Mail-Anfrage direkt an den Lieferanten über die Plattform.
-    - Der Lieferant erhält eine Benachrichtigung mit dem spezifischen Risikokennzeichen und kann den Nachweis eigenständig einreichen.
-
-    <Frame caption="Risiko-Mitigierungsdialog mit Upload- und Anforderungsoptionen">
-      <img src="/images/helpcenter/datensammlung/risiko-beheben-dialog.png" />
-    </Frame>
-  </Step>
-  <Step title="KI-Validierung & Ergebnis">
-    Nach der Einreichung wird der Nachweis automatisch durch die KI geprüft:
-    - **Dokumenttyp-Erkennung** — Das System klassifiziert den Dokumenttyp und ordnet ihn den relevanten Risikokennzeichen zu.
-    - **Konfidenz-Bewertung** — Die KI vergibt eine Vertrauensstufe für den eingereichten Nachweis.
-    - **Automatische Entscheidung** — Bei hoher Konfidenz wird der Nachweis automatisch akzeptiert. Bei niedriger Konfidenz oder kritischen Hinweisen wird eine manuelle Überprüfung ausgelöst.
-
-    Mögliche Ergebnisse:
-    - **Akzeptiert** → Der Status des Risikokennzeichens wechselt zu **„Risiko mitigiert"**.
-    - **Manuelle Prüfung erforderlich** → Der Status wechselt zu **„Ausstehende Prüfung"**. Sie werden per Benachrichtigung über das Ergebnis informiert.
-    - **Abgelehnt** → Der Nachweis war unzureichend. Reichen Sie ein neues Dokument ein.
-  </Step>
-</Steps>
-
-<Info>
-Über die Funktion **"Stapelweise Risikominderung"** können Sie alle offenen Risikokennzeichen eines Artikels oder Lieferanten in einem Schritt bearbeiten.
-</Info>
-
-## Rechtliche Risiken
-
-Das System identifiziert rechtliche Risiken basierend auf dem Fragebogen und den hochgeladenen Dokumenten.
-
-### Rechtliche Risikokategorien
-
-- Landnutzungsrechte
-- Umweltschutz
-- Forstvorschriften
-- Rechte Dritter & indigener Gemeinschaften
-- Arbeits- & Menschenrechte
-- Steuer-, Handels- & Zollvorschriften
-- Anti-Korruption
-
-<Frame caption="Rechtliche Risikokategorien mit Status">
-  <img src="/images/helpcenter/datensammlung/risiko-legal-kategorien.png" />
+<Frame caption="Risiko-Mitigierungsdialog mit Upload- und Anforderungsoptionen">
+  <img src="/images/helpcenter/datensammlung/risiko-beheben-dialog.png" />
 </Frame>
 
-### Rechtliche Risiken mitigieren
+### Option 1: Dokument hochladen
 
-<Steps>
-  <Step title="Kategorie auswählen">
-    Klicken Sie auf **"Mitigieren"** bei der betroffenen Risikokategorie. Der Mitigierungsdialog öffnet sich und zeigt die spezifische Kategorie und deren Anforderungen an.
-  </Step>
-  <Step title="Nachweis im Dialog bereitstellen">
-    Wie bei der Geo-Risiko-Mitigation stehen Ihnen dieselben drei Optionen zur Verfügung:
-    - **Dokument hochladen** — z.B. Landbesitzurkunden, Arbeitsinspektionsberichte, Umweltgenehmigungen, Steuerbescheinigungen.
-    - **Bestehendes Zertifikat verknüpfen** — Anerkannte Zertifizierungen (FSC, PEFC, SFI, ISCC, Rainforest Alliance, RSPO, Fairtrade, RTRS, EU Organic) können automatisch mehrere Kategorien abdecken.
-    - **Vom Lieferanten anfordern** — Der Lieferant wird per E-Mail über die fehlende Kategorie benachrichtigt.
+Laden Sie einen Nachweis direkt hoch, der das Risiko adressiert.
 
-    Fügen Sie eine **Notiz** hinzu, um den Kontext des Nachweises zu beschreiben (z.B. „Gültig bis 2027, ausgestellt von der Bezirksregierung").
-  </Step>
-  <Step title="Validierung abwarten">
-    Die KI validiert den eingereichten Nachweis automatisch. Der Validierungsstatus wird in der Kategorie-Übersicht angezeigt.
-  </Step>
-</Steps>
+- **Unterstützte Formate:** PDF, PNG, JPEG, TIFF, CSV, GeoJSON oder Textdateien (max. 50 MB)
+- **Zertifizierungsschema wählen** (optional) — Wählen Sie z.B. FSC, PEFC oder RSPO aus, damit das System den Nachweis automatisch den passenden Compliance-Kategorien zuordnet
+- **Notiz hinzufügen** — Beschreiben Sie den Kontext des Dokuments (z.B. „Waldbewirtschaftungsplan, gültig bis 2028")
 
-<Tip>
-Für **Holzprodukte aus FLEGT-VPA-Ländern** gibt es einen Schnellweg: Das Hochladen einer gültigen FLEGT-Lizenz erfüllt die rechtlichen Compliance-Anforderungen automatisch für alle Kategorien.
-</Tip>
+**Beispiele für Geo-Risiko-Nachweise:**
+- Zertifikate
+- Behördliche Genehmigungen zur Landnutzung
+- Agroforstwirtschafts-Nachweise
+
+**Beispiele für rechtliche Nachweise:**
+- Landbesitzurkunden oder Pachtverträge
+- Arbeitsinspektionsberichte oder Sozialaudits
+- Umweltgenehmigungen oder Umweltverträglichkeitsprüfungen
+- Zertifikate
+
+### Option 2: Bestehendes Zertifikat verknüpfen
+
+Wählen Sie ein bereits hochgeladenes und verifiziertes Zertifikat aus Ihrer Dokumentenbibliothek.
+
+- Das System prüft automatisch, welche Risikokennzeichen durch das Zertifikat abgedeckt werden
+- Anerkannte Zertifizierungen: **FSC, PEFC, SFI, ISCC, Rainforest Alliance, RSPO, Fairtrade, RTRS, EU Organic**
+- Ein einzelnes Zertifikat kann mehrere Risikokategorien gleichzeitig abdecken
+
+### Option 3: Vom Lieferanten anfordern
+
+Senden Sie eine E-Mail-Anfrage direkt an den Lieferanten über die Plattform.
+
+- Der Lieferant erhält eine Benachrichtigung mit dem spezifischen Risikokennzeichen
+- Der Lieferant kann den Nachweis eigenständig über das Supplier Portal einreichen
+- Sie werden per Benachrichtigung informiert, sobald der Lieferant reagiert
+
+## KI-Validierung
+
+Nach der Einreichung wird jeder Nachweis automatisch durch die KI geprüft:
+
+1. **Dokumenttyp-Erkennung** — Das System klassifiziert den Dokumenttyp und ordnet ihn den relevanten Risikokennzeichen zu
+2. **Konfidenz-Bewertung** — Die KI vergibt eine Vertrauensstufe für den eingereichten Nachweis
+3. **Automatische Entscheidung** — Bei hoher Konfidenz und keinen Unstimmigkeiten (Beispielsweise nicht übereinstimmendes Land) wird der Nachweis direkt akzeptiert. Bei niedriger Konfidenz oder kritischen Hinweisen wird eine manuelle Überprüfung ausgelöst
 
 ### Validierungsstatus
 
 | Status | Beschreibung |
 |--------|-------------|
-| **Akzeptiert** | Nachweis wurde geprüft und akzeptiert |
+| **Akzeptiert** | Nachweis wurde geprüft und akzeptiert — Risikokennzeichen wechselt zu **„Risiko mitigiert"** |
 | **Ausstehend** | Nachweis wurde eingereicht und wird geprüft |
-| **Abgelehnt** | Nachweis wurde abgelehnt — erneute Einreichung erforderlich |
+| **Manuelle Prüfung** | Die KI konnte keine automatische Entscheidung treffen — Sie werden per Benachrichtigung über das Ergebnis informiert |
+| **Abgelehnt** | Nachweis war unzureichend — erneute Einreichung mit einem neuen Dokument erforderlich |
 
 <Frame caption="Validierungsstatus-Anzeige">
   <img src="/images/helpcenter/datensammlung/risiko-validierung-status.png" />
 </Frame>
 
-## Fehlende oder abgelehnte Dokumente
+## Mehrere Risiken auf einmal beheben
+
+Sie müssen nicht jedes Risikokennzeichen einzeln bearbeiten. Über die Checkboxen können Sie mehrere offene Risiken auswählen und gemeinsam mitigieren:
+
+1. Haken Sie die Risikokennzeichen an, die Sie beheben möchten
+2. Laden Sie einen Nachweis hoch oder verknüpfen Sie ein Zertifikat
+3. Reichen Sie alles auf einmal ein
+
+<Info>
+Besonders praktisch, wenn ein einzelnes Zertifikat (z.B. FSC) mehrere Risiken gleichzeitig abdeckt.
+</Info>
+
+## FLEGT-Schnellweg
+
+<Tip>
+Für **Holzprodukte aus FLEGT-VPA-Ländern** gibt es einen Schnellweg: Das Hochladen einer gültigen FLEGT-Lizenz erfüllt die rechtlichen Compliance-Anforderungen automatisch für **alle Kategorien**. Damit entfällt die Notwendigkeit, jede rechtliche Kategorie einzeln zu mitigieren.
+</Tip>
+
+## Fehlende oder abgelehnte Nachweise
 
 <Warning>
-Abgelehnte Nachweise müssen durch neue Dokumente ersetzt werden. Nutzen Sie die Option **"Vom Lieferanten anfordern"**, um den Lieferanten direkt per E-Mail über das Problem zu informieren und korrigierte Dokumente anzufordern.
+Abgelehnte Nachweise müssen durch neue Dokumente ersetzt werden. Nutzen Sie die Option **"Vom Lieferanten anfordern"** im Mitigierungsdialog, um den Lieferanten direkt per E-Mail über das Problem zu informieren und korrigierte Dokumente anzufordern.
 </Warning>
 
-## Lieferantenkommunikation
-
-Nutzen Sie das integrierte **Nachrichtensystem** (unter **Nachrichten**), um direkt mit Lieferanten über die Plattform zu kommunizieren:
+Zusätzlich können Sie das integrierte **Nachrichtensystem** (unter **Nachrichten**) nutzen, um direkt mit Lieferanten zu kommunizieren:
 
 - Fragen zu eingereichten Dokumenten stellen
 - Korrekturen anfordern
