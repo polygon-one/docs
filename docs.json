@@ -33,7 +33,8 @@
             "pages": [
               "de/helpcenter/onboarding/firmenaccount",
               "de/helpcenter/onboarding/traces",
-              "de/helpcenter/onboarding/it-freigabe"
+              "de/helpcenter/onboarding/it-freigabe",
+              "de/helpcenter/onboarding/it-whitelist"
             ]
           },
           {
