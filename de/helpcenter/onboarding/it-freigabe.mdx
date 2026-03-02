@@ -52,11 +52,12 @@ Alle Domains verwenden ausschließlich **HTTPS (Port 443)**. Es werden keine unv
 
 ### E-Mails landen im Spam
 
-**Symptom:** E-Mails von Polygon One werden nicht im Posteingang angezeigt.
+**Symptom:** E-Mails von Polygon One landen im Spam- oder Junk-Ordner (besonders häufig bei Microsoft Outlook / Office 365).
 
 **Lösung:**
-- Die Absenderdomain `contact.polygon-one.com` als vertrauenswürdigen Absender einstufen
-- Im Spam-Ordner nach E-Mails von `@contact.polygon-one.com` suchen
+- Die Absenderadresse `invite@contact.polygon-one.com` als vertrauenswürdigen Absender einstufen
+- Die Domain `contact.polygon-one.com` in der E-Mail-Sicherheitssoftware auf die Whitelist setzen
+- Im Spam-Ordner nach E-Mails von `@contact.polygon-one.com` suchen und als **„Kein Junk"** markieren — dies trainiert den Spam-Filter für zukünftige E-Mails
 
 ## Technische Details für die IT-Abteilung
 
@@ -68,7 +69,7 @@ Unsere E-Mails sind vollständig authentifiziert:
 |-----------|--------|
 | **SPF** | Konfiguriert für `contact.polygon-one.com` |
 | **DKIM** | Konfiguriert für `contact.polygon-one.com` |
-| **DMARC** | Konfiguriert für `polygon-one.com` |
+| **DMARC** | Konfiguriert für `polygon-one.com` und `contact.polygon-one.com` (`p=quarantine`) |
 
 ### SSL-Zertifikat
 

@@ -52,11 +52,12 @@ All domains use **HTTPS (port 443)** exclusively. No unencrypted connections are
 
 ### Emails Going to Spam
 
-**Symptom:** Emails from Polygon One are not appearing in the inbox.
+**Symptom:** Emails from Polygon One are landing in the spam or junk folder (especially common with Microsoft Outlook / Office 365).
 
 **Solution:**
-- Add the sender domain `contact.polygon-one.com` as a trusted sender
-- Check the spam folder for emails from `@contact.polygon-one.com`
+- Add the sender address `invite@contact.polygon-one.com` as a trusted sender
+- Whitelist the domain `contact.polygon-one.com` in your email security software
+- Check the spam folder for emails from `@contact.polygon-one.com` and mark them as **"Not Junk"** — this trains the spam filter for future emails
 
 ## Technical Details for IT
 
@@ -68,7 +69,7 @@ Our emails are fully authenticated:
 |----------|--------|
 | **SPF** | Configured for `contact.polygon-one.com` |
 | **DKIM** | Configured for `contact.polygon-one.com` |
-| **DMARC** | Configured for `polygon-one.com` |
+| **DMARC** | Configured for `polygon-one.com` and `contact.polygon-one.com` (`p=quarantine`) |
 
 ### SSL Certificate
 
