@@ -1,0 +1,87 @@
+---
+title: "IT-Freigabe & Firewall"
+description: "Domains und Einstellungen, die Ihre IT-Abteilung freigeben muss"
+icon: "shield-halved"
+---
+
+## Übersicht
+
+Polygon One ist eine webbasierte Plattform. In Unternehmensnetzwerken mit **Firewalls, Proxy-Servern oder E-Mail-Sicherheitssoftware** kann es vorkommen, dass der Zugriff auf die Plattform oder Links in unseren E-Mails blockiert werden.
+
+<Warning>
+Falls Sie oder Ihre Lieferanten Probleme beim Zugriff auf Polygon One haben (z.B. SSL-Fehlermeldungen, nicht funktionierende Links), leiten Sie diese Seite bitte an Ihre IT-Abteilung weiter.
+</Warning>
+
+## Domains für die Whitelist
+
+Folgende Domains müssen in Ihrer Firewall, Ihrem Proxy und Ihrer E-Mail-Sicherheitssoftware freigegeben werden:
+
+| Domain | Zweck |
+|--------|-------|
+| `app.polygon-one.com` | Hauptanwendung |
+| `polygon-one.com` | Website & Helpcenter |
+| `contact.polygon-one.com` | Absenderdomain für E-Mails |
+| `*.supabase.co` | Authentifizierung & Datenbank |
+
+<Info>
+Alle Domains verwenden ausschließlich **HTTPS (Port 443)**. Es werden keine unverschlüsselten Verbindungen verwendet.
+</Info>
+
+## Häufige Probleme
+
+### SSL-Zertifikatsfehler
+
+**Symptom:** Der Browser zeigt `NET::ERR_CERT_AUTHORITY_INVALID` oder „Ihre Verbindung ist nicht privat" an.
+
+**Ursache:** Ihre Unternehmens-Firewall führt eine **SSL/TLS-Inspektion** durch und ersetzt das Zertifikat von Polygon One durch ein internes Zertifikat, dem der Browser nicht vertraut.
+
+**Lösung:**
+- `app.polygon-one.com` von der SSL-Inspektion ausnehmen (Whitelist), **oder**
+- Das interne Firmen-CA-Zertifikat im Stammzertifikatspeicher des Browsers installieren
+
+### Links in E-Mails funktionieren nicht
+
+**Symptom:** Einladungs- oder Aktivierungslinks aus Polygon One E-Mails führen zu einer Fehlerseite oder einer ungültigen URL.
+
+**Ursache:** E-Mail-Sicherheitssoftware (z.B. Microsoft Defender Safe Links, Proofpoint, Mimecast) schreibt URLs um oder kürzt diese beim Scannen.
+
+**Lösung:**
+- `app.polygon-one.com` und `contact.polygon-one.com` in der E-Mail-Sicherheitssoftware auf die Whitelist setzen
+- Alternativ: Den Link direkt aus der E-Mail kopieren und manuell im Browser einfügen
+
+### E-Mails landen im Spam
+
+**Symptom:** E-Mails von Polygon One werden nicht im Posteingang angezeigt.
+
+**Lösung:**
+- Die Absenderdomain `contact.polygon-one.com` als vertrauenswürdigen Absender einstufen
+- Im Spam-Ordner nach E-Mails von `@contact.polygon-one.com` suchen
+
+## Technische Details für die IT-Abteilung
+
+### E-Mail-Authentifizierung
+
+Unsere E-Mails sind vollständig authentifiziert:
+
+| Protokoll | Status |
+|-----------|--------|
+| **SPF** | Konfiguriert für `contact.polygon-one.com` |
+| **DKIM** | Konfiguriert für `contact.polygon-one.com` |
+| **DMARC** | Konfiguriert für `polygon-one.com` |
+
+### SSL-Zertifikat
+
+| Eigenschaft | Wert |
+|-------------|------|
+| **Domain** | `app.polygon-one.com` |
+| **Aussteller** | Let's Encrypt |
+| **Hosting** | Vercel (Frankfurt, EU) |
+| **Protokoll** | TLS 1.2 / TLS 1.3 |
+
+## Kontakt
+
+Falls Sie weitere technische Informationen benötigen, wenden Sie sich an unser Support-Team:
+
+<Card title="Support kontaktieren" icon="envelope" href="mailto:help@polygon-one.com">
+  help@polygon-one.com
+</Card>

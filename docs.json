@@ -32,7 +32,8 @@
             "group": "Ersteinrichtung",
             "pages": [
               "de/helpcenter/onboarding/firmenaccount",
-              "de/helpcenter/onboarding/traces"
+              "de/helpcenter/onboarding/traces",
+              "de/helpcenter/onboarding/it-freigabe"
             ]
           },
           {
