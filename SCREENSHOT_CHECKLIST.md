@@ -72,6 +72,21 @@ Drop each screenshot into `images/helpcenter/{subfolder}/` with the exact filena
 - [ ] `lieferantenportal-fragebogen.png` — Rechtlicher Compliance-Fragebogen (eine Kategorie aufgeklappt)
 - [ ] `lieferantenportal-abschluss.png` — Abschluss/Einreichungsseite
 
+## Einstellungen (`images/helpcenter/einstellungen/`)
+
+- [ ] `einstellungen-profil.png` — Profilübersicht mit Kontaktdaten und TRACES-Integration
+- [ ] `einstellungen-branding.png` — Firmen-Branding Bereich mit Logo-Upload
+- [ ] `einstellungen-benachrichtigungen.png` — Benachrichtigungseinstellungen mit In-App/E-Mail Toggles
+- [ ] `einstellungen-api-keys.png` — API-Schlüssel Verwaltung mit Schlüsseltabelle
+- [ ] `einstellungen-csv-mapping.png` — CSV-Import Spaltenzuordnung (z.B. Artikel-Tab)
+- [ ] `einstellungen-automatisierungen.png` — Automatisierungseinstellungen (DDS-Zuweisung, Compliance-Erinnerungen)
+
+## Datensammlung — Update-Anfragen (`images/helpcenter/datensammlung/`)
+
+- [ ] `update-anfragen-dialog.png` — Update-Anfrage Dialog mit Bereichsauswahl
+- [ ] `update-anfragen-artikel.png` — Artikelauswahl im Update-Anfrage Dialog
+- [ ] `update-anfragen-tracking.png` — Update-Anfragen Status in der Supply Chain Ansicht
+
 ## Optional (`images/helpcenter/optional/`)
 
 - [ ] `outbound-dashboard.png` — Ausgehend-Dashboard mit Verkaufsartikeln
@@ -79,11 +94,15 @@ Drop each screenshot into `images/helpcenter/{subfolder}/` with the exact filena
 - [ ] `supply-chain-globus.png` — Globusansicht mit Lieferantenstandorten
 - [ ] `dokumente-liste.png` — Dokumentenübersicht mit Statusfilter
 - [ ] `karte-uebersicht.png` — Vollständige Kartenansicht mit Produktionsflächen und Sidebar
+- [ ] `plots-uebersicht.png` — Parzellenübersicht mit Filtern und Analysestatus
+- [ ] `plots-analysestatus.png` — Analysestatus Detail mit Risikokennzeichen und Hansen-Waldverlust
+- [ ] `plots-bearbeiten.png` — Parzelle bearbeiten Dialog
+- [ ] `benachrichtigungen-uebersicht.png` — Benachrichtigungscenter mit Filteroptionen
 - [ ] `nachrichten-verfassen.png` — Nachricht verfassen Formular
 
 ---
 
-**Total: 59 Screenshots**
+**Total: 72 Screenshots**
 
 ### Empfohlene Reihenfolge
 

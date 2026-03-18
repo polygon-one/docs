@@ -1,0 +1,104 @@
+---
+title: "Parzellen verwalten"
+description: "Produktionsparzellen in der Tabellenansicht verwalten, filtern und analysieren"
+icon: "table-cells"
+---
+
+## Übersicht
+
+Die **Parzellenansicht** bietet eine tabellarische Übersicht aller erfassten Produktionsflächen Ihrer Lieferkette. Im Unterschied zur [Kartenansicht](/de/helpcenter/optional/karte) können Sie hier Parzellen filtern, sortieren, in Masse bearbeiten und den Analysestatus im Detail einsehen.
+
+<Frame caption="Parzellenübersicht mit Filtern und Analysestatus">
+  <img src="/images/helpcenter/optional/plots-uebersicht.png" />
+</Frame>
+
+## Tabellenspalten
+
+| Spalte | Beschreibung |
+|--------|-------------|
+| **Name** | Bezeichnung der Parzelle (sortierbar) |
+| **Lieferant** | Zugehöriger Lieferant |
+| **Artikel** | Verknüpfte Artikel (als Badges angezeigt) |
+| **Land** | Produktionsland |
+| **Größe (ha)** | Flächengröße in Hektar |
+| **Rohstoff** | Rohstoffgruppe (z.B. Kaffee, Kakao, Holz) |
+| **Analysestatus** | Ergebnis der Satellitenanalyse mit Risikostufe |
+| **Produktionszeitraum** | Von- und Bis-Datum der Produktion |
+
+## Analysestatus
+
+Der Analysestatus zeigt den aktuellen Stand der Satellitenauswertung:
+
+### Verarbeitungsstatus
+
+| Status | Beschreibung |
+|--------|-------------|
+| **Ausstehend** | Analyse wurde noch nicht gestartet |
+| **Analyse läuft...** | Satellitenauswertung wird gerade durchgeführt |
+| **Analyse fehlgeschlagen** | Auswertung konnte nicht abgeschlossen werden |
+| **Ausgenommen** | Parzelle ist einem nicht-EUDR-relevanten Artikel zugeordnet |
+
+### Risikostufe (nach Abschluss)
+
+| Risikostufe | Farbe | Beschreibung |
+|-------------|-------|-------------|
+| **Niedrig** | Grün | Keine Entwaldungshinweise erkannt |
+| **Mittel** | Gelb | Einzelne Hinweise erkannt, weitere Prüfung empfohlen |
+| **Hoch** | Rot | Deutliche Entwaldungs- oder Degradierungshinweise |
+
+<Frame caption="Analysestatus mit Risikokennzeichen und Hansen-Waldverlust">
+  <img src="/images/helpcenter/optional/plots-analysestatus.png" />
+</Frame>
+
+Fahren Sie mit der Maus über den Analysestatus, um ein **Detail-Tooltip** mit folgenden Informationen zu sehen:
+
+- Zusammenfassung der Analyse
+- Hansen-Waldverlust nach 2020 (Prozent)
+- Aufschlüsselung der Risikokennzeichen (Hoch / Mittel / Info)
+- Minderungsstatus (falls zutreffend)
+
+## Filter
+
+| Filter | Beschreibung |
+|--------|-------------|
+| **Textsuche** | Durchsucht Name, Lieferant und Artikel |
+| **Land** | Nach Produktionsland filtern (Mehrfachauswahl) |
+| **Rohstoffgruppe** | Nach Rohstoff filtern (Mehrfachauswahl) |
+| **Risikostufe** | Niedrig, Mittel oder Hoch (Mehrfachauswahl) |
+| **Analysestatus** | Ausstehend, In Bearbeitung, Abgeschlossen, Fehlgeschlagen, Ausgenommen |
+
+## Massenaktionen
+
+Wählen Sie eine oder mehrere Parzellen über die Checkboxen aus, um folgende Aktionen durchzuführen:
+
+<CardGroup cols={2}>
+  <Card title="GeoJSON exportieren" icon="download">
+    Exportiert die ausgewählten Parzellen als GeoJSON-Datei für die Verwendung in GIS-Systemen.
+  </Card>
+  <Card title="Parzellen bearbeiten" icon="pen-to-square">
+    Aktualisieren Sie Artikel, Produktionsdaten oder Erzeugernamen für mehrere Parzellen gleichzeitig.
+  </Card>
+  <Card title="Neu analysieren" icon="rotate">
+    Starten Sie die Satellitenanalyse erneut für ausgewählte Parzellen — z.B. nach einer Grenzkorrektur.
+  </Card>
+  <Card title="Parzellen löschen" icon="trash">
+    Entfernen Sie ausgewählte Parzellen (mit Bestätigungsdialog).
+  </Card>
+</CardGroup>
+
+## Einzelaktionen
+
+Über das **Aktionsmenü** (drei Punkte) in jeder Zeile stehen folgende Optionen zur Verfügung:
+
+- **Bearbeiten** — Parzellenname, Produktionsdaten, Erzeuger und Geometrie anpassen
+- **Auf Karte anzeigen** — Direkt zur [Kartenansicht](/de/helpcenter/optional/karte) der Parzelle wechseln
+- **Neu analysieren** — Satellitenanalyse für diese Parzelle erneut starten
+- **Löschen** — Parzelle entfernen
+
+<Frame caption="Parzelle bearbeiten Dialog">
+  <img src="/images/helpcenter/optional/plots-bearbeiten.png" />
+</Frame>
+
+<Tip>
+Die Parzellenansicht eignet sich besonders gut, um nach der Datensammlung schnell alle Parzellen mit hohem Risiko zu identifizieren — nutzen Sie den Filter **Risikostufe → Hoch** und starten Sie von dort die [Risiko-Behebung](/de/helpcenter/datensammlung/risiko-behebung).
+</Tip>

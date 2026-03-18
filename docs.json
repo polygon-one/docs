@@ -56,7 +56,8 @@
             "pages": [
               "de/helpcenter/datensammlung/uebersicht-art9",
               "de/helpcenter/datensammlung/evidence-upload",
-              "de/helpcenter/datensammlung/supplier-onboarding"
+              "de/helpcenter/datensammlung/supplier-onboarding",
+              "de/helpcenter/datensammlung/update-anfragen"
             ]
           },
           {
@@ -85,12 +86,20 @@
             ]
           },
           {
+            "group": "Einstellungen",
+            "pages": [
+              "de/helpcenter/einstellungen"
+            ]
+          },
+          {
             "group": "Optional",
             "pages": [
               "de/helpcenter/optional/outbound-artikel",
               "de/helpcenter/optional/supply-chain",
               "de/helpcenter/optional/dokumente",
               "de/helpcenter/optional/karte",
+              "de/helpcenter/optional/plots",
+              "de/helpcenter/optional/benachrichtigungen",
               "de/helpcenter/optional/contact-center"
             ]
           }

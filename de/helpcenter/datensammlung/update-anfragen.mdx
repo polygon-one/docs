@@ -1,0 +1,80 @@
+---
+title: "Gezielte Update-Anfragen"
+description: "Lieferanten auffordern, bestimmte Compliance-Bereiche zu aktualisieren"
+icon: "arrows-rotate"
+---
+
+## Übersicht
+
+Mit **gezielten Update-Anfragen** können Sie Lieferanten auffordern, bestimmte Bereiche ihrer Compliance-Daten zu überprüfen und zu aktualisieren — z.B. nur die Geodaten oder nur den rechtlichen Fragebogen. So vermeiden Sie unnötige Rückfragen und beschleunigen den Compliance-Prozess.
+
+<Frame caption="Update-Anfrage Dialog — Bereiche auswählen">
+  <img src="/images/helpcenter/datensammlung/update-anfragen-dialog.png" />
+</Frame>
+
+## Anfrage erstellen
+
+<Steps>
+  <Step title="Lieferant auswählen">
+    Öffnen Sie die **Supply Chain Ansicht** und klicken Sie auf den gewünschten Lieferanten-Knoten. Wählen Sie **"Aktualisierung anfordern"**.
+  </Step>
+  <Step title="Bereiche auswählen">
+    Wählen Sie die Bereiche, die der Lieferant aktualisieren soll:
+
+    | Bereich | Beschreibung |
+    |---------|-------------|
+    | **Fragebogen** | Compliance-Fragebogen zu rechtlichen Kategorien |
+    | **Geodaten** | Produktionsflächen-Koordinaten und -grenzen |
+    | **Rechtliche Dokumente** | Genehmigungen, Landtitel, Umweltbewertungen |
+    | **Allgemeine Informationen** | Firmendaten, Kontakt, Adresse |
+    | **Zertifizierungen** | FSC, PEFC, Rainforest Alliance, ISCC, etc. |
+
+    <Info>
+    Polygon One wählt automatisch die Bereiche vor, die basierend auf dem aktuellen Compliance-Status Aufmerksamkeit erfordern (Status: ausstehend, nicht konform oder in Prüfung).
+    </Info>
+  </Step>
+  <Step title="Rechtliche Kategorien spezifizieren (optional)">
+    Falls relevant, können Sie zusätzlich angeben, welche **rechtlichen Kategorien** betroffen sind:
+
+    - Landnutzungsrechte
+    - Umweltschutz
+    - Forstvorschriften
+    - Rechte Dritter (FPIC)
+    - Arbeits- & Menschenrechte
+    - Steuern, Handel & Zoll
+    - Anti-Korruption
+  </Step>
+  <Step title="Nachricht hinzufügen (optional)">
+    Fügen Sie eine persönliche Nachricht hinzu, um dem Lieferanten Kontext zu geben.
+
+    <Warning>
+    Fügen Sie **keine Compliance-Ergebnisse oder Risikobewertungsdetails** in Ihre Nachricht ein. Der Lieferant sieht die relevanten Bereiche direkt in seinem Portal.
+    </Warning>
+  </Step>
+  <Step title="Senden">
+    Wählen Sie die Versandmethode:
+
+    - **"Senden via Plattform"** — Der Lieferant wird automatisch per E-Mail benachrichtigt
+    - **"Kopieren & selbst senden"** — Die Nachricht und E-Mail-Adresse werden in Ihre Zwischenablage kopiert, damit Sie sie über Ihren eigenen Kanal versenden können
+  </Step>
+</Steps>
+
+## Was der Lieferant sieht
+
+Nach Erhalt der Anfrage öffnet der Lieferant sein Portal und sieht die angefragten Bereiche hervorgehoben. Er kann gezielt nur die angeforderten Informationen aktualisieren, ohne den gesamten Onboarding-Prozess erneut durchlaufen zu müssen.
+
+## Tracking
+
+Der Fortschritt jeder Update-Anfrage wird über Benachrichtigungen verfolgt:
+
+| Status | Beschreibung |
+|--------|-------------|
+| **Gesendet** | Die Anfrage wurde an den Lieferanten übermittelt |
+| **Angesehen** | Der Lieferant hat die angefragten Bereiche im Portal geöffnet |
+| **Erledigt** | Der Lieferant hat die angeforderten Daten aktualisiert |
+
+Diese Statusänderungen erscheinen auch in Ihrem [Benachrichtigungscenter](/de/helpcenter/optional/benachrichtigungen).
+
+<Tip>
+Gezielte Update-Anfragen sind besonders nützlich nach der [Risikoanalyse](/de/helpcenter/datensammlung/risikoanalyse), wenn Sie wissen, welche spezifischen Bereiche Nachbesserung benötigen.
+</Tip>

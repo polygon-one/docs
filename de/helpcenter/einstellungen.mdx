@@ -1,0 +1,186 @@
+---
+title: "Einstellungen"
+description: "Profil, API-Schlüssel, Benachrichtigungen, CSV-Importe und Automatisierungen konfigurieren"
+icon: "gear"
+---
+
+## Übersicht
+
+Unter **Einstellungen** verwalten Sie Ihr Firmenprofil, Integrationen und Automatisierungen. Die Seite ist in fünf Bereiche unterteilt.
+
+<Frame caption="Einstellungen — Profilübersicht">
+  <img src="/images/helpcenter/einstellungen/einstellungen-profil.png" />
+</Frame>
+
+---
+
+## Profil
+
+### Kontaktdaten
+
+Pflegen Sie die Stammdaten Ihres Unternehmens:
+
+| Feld | Beschreibung |
+|------|-------------|
+| **Name** | Ihr vollständiger Name |
+| **E-Mail** | Ihre Anmelde-E-Mail (nicht änderbar) |
+| **Firma** | Firmenname |
+| **Straße** | Straße und Hausnummer |
+| **PLZ** | Postleitzahl |
+| **Stadt** | Stadt |
+| **Land** | Firmensitz |
+
+### Firmen-Branding
+
+Laden Sie Ihr Firmenlogo hoch (PNG oder JPEG, max. 2 MB). Das Logo wird in Berichten und im Lieferantenportal angezeigt.
+
+<Frame caption="Firmenlogo hochladen">
+  <img src="/images/helpcenter/einstellungen/einstellungen-branding.png" />
+</Frame>
+
+### TRACES-Integration
+
+Verbinden Sie Polygon One mit dem EU TRACES-NT System für die automatische DDS-Einreichung:
+
+| Feld | Beschreibung |
+|------|-------------|
+| **EORI-Nummer** | Ihre EORI-Registrierungsnummer |
+| **TRACES-Benutzername** | Ihr TRACES-NT Benutzername |
+| **TRACES Web Service Access Token** | Ihr Webservice-Zugriffsschlüssel (wird verborgen angezeigt) |
+
+<Info>
+Die TRACES-Zugangsdaten erhalten Sie über das EU Login Portal. Eine Schritt-für-Schritt-Anleitung finden Sie unter [TRACES-Registrierung](/de/helpcenter/onboarding/traces).
+</Info>
+
+### Vertrauliche Geolokalisierung
+
+Aktivieren Sie die Option **"Vertrauliche Behandlung von Geolokalisierungsdaten"**, um in DDS-Einreichungen die vertrauliche Behandlung Ihrer Geodaten zu beantragen.
+
+### Passwort ändern
+
+Über den Bereich **Passwort ändern** können Sie Ihr Anmeldepasswort aktualisieren. Sie benötigen dazu Ihr aktuelles Passwort.
+
+---
+
+## Benachrichtigungen
+
+Steuern Sie, welche Benachrichtigungen Sie über welchen Kanal erhalten.
+
+<Frame caption="Benachrichtigungseinstellungen mit Kanal-Toggles">
+  <img src="/images/helpcenter/einstellungen/einstellungen-benachrichtigungen.png" />
+</Frame>
+
+Für jeden Benachrichtigungstyp können Sie zwei Kanäle separat aktivieren oder deaktivieren:
+
+| Kanal | Beschreibung |
+|-------|-------------|
+| **In-App** | Benachrichtigung im [Benachrichtigungscenter](/de/helpcenter/optional/benachrichtigungen) |
+| **E-Mail** | Benachrichtigung per E-Mail |
+
+Besonders wichtige Ereignisse (z.B. fehlgeschlagene DDS-Einreichungen) sind mit dem Badge **"Wichtig"** gekennzeichnet.
+
+<Tip>
+Über **"Auf Standardeinstellungen zurücksetzen"** können Sie jederzeit die empfohlene Konfiguration wiederherstellen.
+</Tip>
+
+---
+
+## API-Schlüssel
+
+Erstellen Sie API-Schlüssel für die Integration von Polygon One in Ihre Systemlandschaft.
+
+<Frame caption="API-Schlüssel verwalten">
+  <img src="/images/helpcenter/einstellungen/einstellungen-api-keys.png" />
+</Frame>
+
+### Schlüssel erstellen
+
+<Steps>
+  <Step title="Dialog öffnen">
+    Klicken Sie auf **"Schlüssel erstellen"**.
+  </Step>
+  <Step title="Name und Berechtigungen festlegen">
+    Vergeben Sie einen Namen und wählen Sie die gewünschten Berechtigungen:
+
+    | Bereich | Lesen | Schreiben |
+    |---------|-------|-----------|
+    | **Artikel** | `articles:read` | `articles:write` |
+    | **Lieferanten** | `suppliers:read` | `suppliers:write` |
+    | **Bestellungen** | `orders:read` | `orders:write` |
+    | **DDS-Erklärungen** | `dds:read` | `dds:write` |
+  </Step>
+  <Step title="Schlüssel kopieren">
+    Der API-Schlüssel wird **nur einmal** angezeigt. Kopieren Sie ihn sofort und speichern Sie ihn sicher.
+  </Step>
+</Steps>
+
+<Warning>
+Ein API-Schlüssel kann nach der Erstellung nicht erneut angezeigt werden. Bei Verlust muss ein neuer Schlüssel erstellt werden.
+</Warning>
+
+Weitere Details zur API-Nutzung finden Sie in der [API-Referenz](/api-reference/introduction).
+
+---
+
+## CSV-Importe
+
+Konfigurieren Sie die Spaltenzuordnung für CSV-Importe. Polygon One unterstützt den Import von vier Datentypen:
+
+<Tabs>
+  <Tab title="Artikel">
+    Ordnen Sie Ihre CSV-Spaltenüberschriften den Polygon One-Feldern zu (z.B. `HS-Code`, `Artikelname`, `Rohstoffgruppe`). Pflichtfelder und optionale Felder sind klar gekennzeichnet.
+  </Tab>
+  <Tab title="Lieferanten">
+    Ordnen Sie Spalten wie `Firmenname`, `Land`, `E-Mail-Adresse` den entsprechenden Systemfeldern zu.
+  </Tab>
+  <Tab title="Bestellungen">
+    Konfigurieren Sie das Mapping für Bestelldaten (Bestellnummer, Artikelzuordnung, Menge, etc.).
+  </Tab>
+  <Tab title="Parzellen">
+    Ordnen Sie Spalten für Geodaten zu (Parzellenname, Koordinaten, Produktionszeitraum, etc.).
+  </Tab>
+</Tabs>
+
+<Frame caption="CSV-Import — Spaltenzuordnung konfigurieren">
+  <img src="/images/helpcenter/einstellungen/einstellungen-csv-mapping.png" />
+</Frame>
+
+### Wert-Zuordnungen
+
+Neben Spalten können Sie auch **Werte** zuordnen. Wenn Ihre CSV-Datei z.B. `"Einkauf"` statt `"purchase"` verwendet, können Sie eine Zuordnung definieren, damit der Import korrekt funktioniert.
+
+<Tip>
+Über **"Auf Standardzuordnungen zurücksetzen"** können Sie die Konfiguration jederzeit auf die Standardwerte zurücksetzen.
+</Tip>
+
+---
+
+## Automatisierungen
+
+Automatisieren Sie wiederkehrende Arbeitsschritte im DDS-Workflow.
+
+<Frame caption="Automatisierungseinstellungen">
+  <img src="/images/helpcenter/einstellungen/einstellungen-automatisierungen.png" />
+</Frame>
+
+### Bestellungen & DDS
+
+| Automatisierung | Beschreibung |
+|----------------|-------------|
+| **Bestellungen automatisch DDS zuweisen** | Neue Bestellungen werden automatisch einer passenden DDS zugeordnet |
+| **DDS für Bestellungen automatisch erstellen** | Falls keine passende DDS vorhanden ist, wird automatisch eine neue erstellt |
+| **Standard-Volumen** | Das Standardvolumen (in kg) für automatisch erstellte DDS |
+
+### Compliance-Erinnerungen
+
+Senden Sie automatische Erinnerungen an Lieferanten, die ihre Compliance-Daten noch nicht bereitgestellt haben:
+
+| Einstellung | Beschreibung |
+|-------------|-------------|
+| **Aktivieren** | Automatische Erinnerungen ein-/ausschalten |
+| **Verzögerung (Tage)** | Wie viele Tage nach der Einladung die erste Erinnerung gesendet wird (1–90) |
+| **Abklingzeit (Tage)** | Mindestabstand zwischen Erinnerungen an denselben Lieferanten (1–90) |
+
+<Info>
+Compliance-Erinnerungen werden nur an Lieferanten gesendet, die eine E-Mail-Adresse hinterlegt haben und deren Compliance-Status noch offen ist.
+</Info>
